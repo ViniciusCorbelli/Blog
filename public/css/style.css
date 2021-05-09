@@ -1,0 +1,238 @@
+/* Site */
+
+.body-site {
+    background-color: #ececec;
+}
+
+.navbar {
+    background-color: #251233!important;
+}
+
+.navbar a {
+    color: #ececec!important;
+}
+
+.navbar a:hover {
+    color: #ffce07!important;
+    transition: 0.3s;
+}
+
+.active {
+    color: #ffce07!important;
+    background-color: #251233!important;
+}
+
+.navbar-site ul {
+    margin: auto;
+}
+
+.navbar-site li {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.logo img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    width: 750px;
+    height: auto;
+}
+
+.pagina {
+    margin-top: 50px;
+}
+
+.postagem {
+    background-color: #fff;
+    box-shadow: -3px 5px 5px rgba(50, 50, 50, 0.77);
+    padding: 20px;
+}
+
+.postagem img {
+    max-height: 400px;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.post-main h1 {
+    color: #000!important;
+    margin-bottom: 2vw;
+    font-size: 28px;
+}
+
+.post-main h6 {
+    color: #000!important;
+    font-size: 16px;
+}
+
+.post-main p {
+    color: #000!important;
+}
+
+.post-author h5 {
+    color: #000;
+}
+
+.post-author h6 {
+    color: #000;
+}
+
+.post-author img {
+    float: left;
+    max-width: 5vw;
+    margin-right: 10px;
+}
+
+.post-title {
+    background-color: #251233;
+}
+
+.post-title h2 {
+    color: #fefff5;
+}
+
+.post-title h5 {
+    color: #fefff5;
+}
+
+.post-continuar {
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.post-continuar h5 {
+    color: #000!important;
+    font-size: 16px;
+}
+
+.post-show {
+    margin-top: 10px;
+}
+
+.button-continue {
+    margin-bottom: 20px;
+}
+
+.post-profile {
+    margin-right: 20px;
+    text-align: center;
+    max-height: 33vw!important;
+}
+
+.button-responder {
+    float: right;
+    margin-top: 20px;
+}
+
+
+/* Admin */
+
+.userStatus {
+    position: absolute;
+    top: 50%;
+    left: 4%;
+}
+
+.body-class {
+    background-color: #251233!important;
+    min-height: 100vh;
+}
+
+.brand-link {
+    background-color: #251233!important;
+}
+
+.title h1 {
+    padding-top: 60px;
+    color: #ffce07;
+    font-size: 48px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.form-msg {
+    color: #e9ecef;
+    text-align: center;
+}
+
+.form-register label {
+    color: #e9ecef;
+}
+
+.form-center {
+    margin: auto;
+    width: 80%;
+}
+
+.laptop {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.laptop img {
+    max-width: 100%;
+}
+
+.sidebar {
+    background-color: #251233!important;
+}
+
+.brand-text {
+    color: #ffce07;
+}
+
+.btn-primary {
+    background-color: #251233!important;
+    border-color: #251233!important;
+}
+
+.button-registrar {
+    margin-top: 20px;
+}
+
+.buttons {
+    background-color: #251233;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ffce07;
+    color: #ffce07;
+}
+
+.buttons:hover {
+    background-color: #ffce07;
+    color: #251233;
+    transition: 0.5s;
+}
+
+hr {
+    border-top: 1px solid #f6f6f7;
+}
+
+.limite-rows {
+    text-align: justify;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 10;
+    -webkit-box-orient: vertical;
+}
+
+@media only screen and (max-device-width: 900px) {
+    .laptop {
+        min-height: 50vh;
+    }
+    .navbar-brand {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+    .title h1 {
+        padding-top: 0px;
+        font-size: 32px;
+    }
+    .create-acount-img img {
+        height: 70px;
+        padding: 10px;
+    }
+}
