@@ -14,7 +14,7 @@ class CommentController extends Controller
         $data['user_id'] = Auth::user()->id;
         $data['date'] = date('d/m/Y H:i');
         Comment::create($data);
-        return redirect()->route('posts.show', $data['post_id'])->with('success', true);
+        return redirect()->route('posts.view', $data['post_id'])->with('success', true);
     }
 
     public function edit(Comment $comment)
@@ -25,7 +25,7 @@ class CommentController extends Controller
     public function update(PostRequest $request, Comment $comment)
     {
         $comment->update($request->all());
-        return redirect()->route('posts.show', $request->post_id)->with('success', true);
+        return redirect()->route('posts.view', $request->post_id)->with('success', true);
     }
 
     public function destroy(Comment $comment)

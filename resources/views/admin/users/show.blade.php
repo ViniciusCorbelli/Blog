@@ -78,7 +78,7 @@
                                                     </h3>
                                                     <div class="timeline-body"> {{ $posts[$i]->message }}</div>
                                                     <div class="timeline-footer">
-                                                        <a href="{{ route('posts.show', $posts[$i]->id) }}" class="btn btn-primary btn-sm">Ler mais</a>
+                                                        <a href="{{ route('posts.view', $posts[$i]->id) }}" class="btn btn-primary btn-sm">Ler mais</a>
                                                     </div>
                                                 </div>
                                             </div>

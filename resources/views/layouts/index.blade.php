@@ -36,15 +36,41 @@
         </div>
         <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-site">
             <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    <li class="nav-item">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item ">
                         <a class="nav-link navegation" href="{{ route('site.index') }}">Início</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link navegation" href="{{ route('login') }}"><i
-                                class="fas fa-sign-in-alt"></i></a>
+                        <a class="nav-link navegation" href="{{ route('site.index') }}">Posts</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link navegation" href="{{ route('site.index') }}">Destaques</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link navegation" href="{{ route('site.index') }}">Categorias</a>
                     </li>
                 </ul>
+                <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+                    @if (Auth::user() == null)
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link navegation navegation-left" href="{{ route('login') }}"><i
+                                        class="fas fa-sign-in-alt"></i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link navegation navegation-left" href="{{ route('register') }}"><i
+                                        class="fas fa-user-plus"></i></a>
+                            </li>
+                        </ul>
+                    @else
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link navegation navegation-left" href="{{ route('login') }}">{{Auth::user()->name}} <i
+                                    class="fas fa-sign-in-alt"></i></a>
+                            </li>
+                        </ul>
+                    @endif
+                </div>
             </div>
         </nav>
         <div class="pagina">

@@ -66,7 +66,7 @@
                     <div class="postagem post-main">
                         <p class="limite-rows"> {{ $posts[$i]->message }} </p>
                         <div class="post-continuar">
-                            <a href="{{ route('posts.show', $posts[$i]->id) }}"><button type="button"
+                            <a href="{{ route('posts.view', $posts[$i]->id) }}"><button type="button"
                                     class="btn btn-primary button-continue">Continue
                                     lendo</button></a>
                         </div>

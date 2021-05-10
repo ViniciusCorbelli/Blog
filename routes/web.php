@@ -16,8 +16,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', 'IndexController@index')->name('site.index');
-Route::resource('/post', 'PostController@show')
-    ->names('posts.show');
+Route::get('/post/{post}/show', 'PostController@show')->name('posts.view');
 Route::put('/post/comment/{post}', 'CommentController@store')->name('comment.store');
 
 Route::middleware('auth')->group(function () {

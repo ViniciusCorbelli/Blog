@@ -2,22 +2,39 @@
 
 @section('content')
     <div class="container">
-        <h3> {{ $post->category->name }} </h3>
-        <h1> {{ $post->title }} </h1>
-        <div class="row post-show">
-            <div class="col-3 postagem post-show post-profile">
-                <h1>
-                    @if ($post->user->access == 'Administrador') <strong> @endif {{ $post->user->name }} </strong>
-                </h1>
-                <img src={{ asset('img/' . $post->user->image) }} alt="Foto de perfil">
-                <h6><strong> Membro desde </strong> {{ $post->user->created_at }}</h6>
-                <h6><strong> Tipo de usúario </strong> {{ $post->user->access }}</h6>
-                <h6><strong> Postado em </strong> {{ $post->date }}</h6>
-            </div>
-            <div class="col-8 postagem post-show">
-                <p> {{ $post->message }} </p>
-            </div>
+
+        <div class="verticals ten offset-by-one">
+            <ol class="breadcrumb breadcrumb-fill2">
+                <li><a href="{{ route('site.index') }}"><i class="fa fa-home"></i></a></li>
+                <li><a href="#">Posts</a></li>
+                <li><a href="#">{{ $post->category->name }}</a></li>
+                <li class="active-breadcrumb"> {{ $post->title }}</li>
+            </ol>
         </div>
+        <h1> {{ $post->title }} </h1>
+        <p>Tópico em '{{ $post->category->name }}' criado por {{ $post->user->name }}, {{ $post->date }}.</p>
+        {{ $comments->links() }}
+        @if ($comments->currentPage() == 1)
+            <div class="row post-show">
+                <div class="col-3">
+                    <div class="postagem post-show post-profile">
+                        <h1>
+                            @if ($post->user->access == 'Administrador') <strong>
+                            @endif {{ $post->user->name }} </strong>
+                        </h1>
+                        <img src={{ asset('img/' . $post->user->image) }} alt="Foto de perfil">
+                        <h6><strong> Membro desde </strong> {{ $post->user->created_at }}</h6>
+                        <h6><strong> Tipo de usúario </strong> {{ $post->user->access }}</h6>
+                        <h6><strong> Postado em </strong> {{ $post->date }}</h6>
+                    </div>
+                </div>
+                <div class="col-8">
+                    <div class="postagem post-show">
+                        <p> {{ $post->message }} </p>
+                    </div>
+                </div>
+            </div>
+        @endif
         @foreach ($comments as $comment)
             <div class="row post-show">
                 <div class="col-3">
@@ -39,9 +56,12 @@
                 </div>
             </div>
         @endforeach
+
+        {{ $comments->links() }}
+
         @if (Auth::user() != null)
             <div class="row post-show">
-                <div class="col-2 postagem post-show post-profile">
+                <div class="col-2 postagem post-show post-profile post-comment">
                     <img src={{ asset('img/' . $post->user->image) }} alt="Foto de perfil">
                 </div>
                 <div class="col-9 postagem post-show">
