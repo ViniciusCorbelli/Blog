@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Blog</title>
+    <title>CodeJR | Blog</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -37,17 +37,11 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-site">
             <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item ">
+                    <li class="nav-item {{ Route::is('site*') ? 'navegation-active' : '' }}">
                         <a class="nav-link navegation" href="{{ route('site.index') }}">Início</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link navegation" href="{{ route('site.index') }}">Posts</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link navegation" href="{{ route('site.index') }}">Destaques</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link navegation" href="{{ route('site.index') }}">Categorias</a>
+                    <li class="nav-item {{ Route::is('blog*') ? 'navegation-active' : '' }}">
+                        <a class="nav-link navegation" href="{{ route('blog.index') }}">Blog</a>
                     </li>
                 </ul>
                 <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
@@ -65,8 +59,9 @@
                     @else
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item">
-                                <a class="nav-link navegation navegation-left" href="{{ route('login') }}">{{Auth::user()->name}} <i
-                                    class="fas fa-sign-in-alt"></i></a>
+                                <a class="nav-link navegation navegation-left"
+                                    href="{{ route('login') }}">{{ Auth::user()->name }} <i
+                                        class="fas fa-sign-in-alt"></i></a>
                             </li>
                         </ul>
                     @endif
@@ -76,6 +71,29 @@
         <div class="pagina">
             @yield('content')
         </div>
+        <footer class="site-footer">
+            <div class="container p-4">
+                <div class="row">
+                    <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+                        <h5> Redes sociais</h5>
+                        <a href="https://www.instagram.com/codejr/" target="_blank"> <i class="fab fa-instagram"></i> </a>
+                        <a href="https://www.facebook.com/codeempresajunior/" target="_blank"> <i class="fab fa-facebook-square"></i> </a>
+                    </div>
+
+                    <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+                        <h5>Entre em Contato</h5>
+                        <p>+55 38 9944-7013<br>
+                        contato@codejr.com.br<br>
+                        Rua José Lourenço Kelmer, UFJF,<br>
+                        Instituto de Ciências Exatas, sala 3313</p>
+                    </div>
+                </div>
+            </div>
+            <div class="p-3 container">
+                <p>Copyright © 2021 Code Júnior</p>
+            </div>
+            <!-- Copyright -->
+        </footer>
     </main>
     </div>
     @stack('scripts')

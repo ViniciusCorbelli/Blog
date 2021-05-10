@@ -6,8 +6,8 @@
         <div class="verticals ten offset-by-one">
             <ol class="breadcrumb breadcrumb-fill2">
                 <li><a href="{{ route('site.index') }}"><i class="fa fa-home"></i></a></li>
-                <li><a href="#">Posts</a></li>
-                <li><a href="#">{{ $post->category->name }}</a></li>
+                <li><a href="{{ route('blog.index') }}">Blog</a></li>
+                <li>{{ $post->category->name }}</li>
                 <li class="active-breadcrumb"> {{ $post->title }}</li>
             </ol>
         </div>
@@ -31,6 +31,12 @@
                 <div class="col-8">
                     <div class="postagem post-show">
                         <p> {{ $post->message }} </p>
+                        @if (Auth::user() != null && ($post->user_id == Auth::user()->id || Auth::user()->access == 'Administrador'))
+                            <td>
+                                <a href="{{ route('admin.posts.edit', $post->id) }}" class="btn btn-primary"><i
+                                        class="fas fa-edit"></i></a>
+                            </td>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -49,9 +55,29 @@
                         <h6><strong> Postado em </strong> {{ $comment->date }}</h6>
                     </div>
                 </div>
-                <div class="col-8">
+                <div class="col-7">
                     <div class="postagem post-show">
                         <p> {{ $comment->message }} </p>
+                        @if (Auth::user() != null && ($comment->user_id == Auth::user()->id || Auth::user()->access == 'Administrador'))
+                            <table>
+                                <tr>
+                                    <td>
+                                        <a href="{{ route('admin.comments.edit', $comment->id) }}"
+                                            class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                                    </td>
+                                    <td>
+                                        <form class="form-delete"
+                                            action="{{ route('admin.comments.destroyBlog', $comment->id) }}"
+                                            method="post">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit" class="btn btn-danger "><i
+                                                    class="fas fa-trash"></i></button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            </table>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -66,7 +92,7 @@
                 </div>
                 <div class="col-9 postagem post-show">
                     <h4>Responder tópico</h4>
-                    <form action="{{ route('comment.store', $post->id) }}" method="post">
+                    <form action="{{ route('blog.comment.store', $post->id) }}" method="post">
                         @csrf
                         @method('put')
                         <input type="hidden" name="post_id" id="post_id" value="{{ $post->id }}">

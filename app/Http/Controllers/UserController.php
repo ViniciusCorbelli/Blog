@@ -66,7 +66,7 @@ class UserController extends Controller
             $data['image'] = "user.png";
         }
         User::create($data);
-        return redirect()->route('users.index')->with('success', true);
+        return redirect()->route('admin.users.index')->with('success', true);
     }
 
     /**
@@ -101,7 +101,7 @@ class UserController extends Controller
             unset($data['image']);
         }
         $user->update($data);
-        return redirect()->route('users.index')->with('success', true);
+        return redirect()->route('admin.users.index')->with('success', true);
     }
 
     /**
@@ -113,6 +113,6 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
-        return redirect()->route('users.index')->with('success', true);
+        return redirect()->route('admin.users.index')->with('success', true);
     }
 }

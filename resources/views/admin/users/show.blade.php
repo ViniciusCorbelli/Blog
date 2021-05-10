@@ -19,11 +19,11 @@
                         </li>
                     </ul>
                     @can('update', $user)
-                        <a href="{{ route('users.edit', $user->id) }}" class="btn btn-primary btn-block mb-2"><i
+                        <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-primary btn-block mb-2"><i
                                 class="fas fa-pen"></i> Editar</a>
                     @endcan
                     @can('delete', $user)
-                        <form class="form-delete" action="{{ route('users.destroy', $user->id) }}" method="post">
+                        <form class="form-delete" action="{{ route('admin.users.destroy', $user->id) }}" method="post">
                             @csrf
                             @method('delete')
                             <button type="submit" class="btn btn-danger btn-block"><i class="fas fa-trash"></i> Excluir</button>
@@ -78,7 +78,7 @@
                                                     </h3>
                                                     <div class="timeline-body"> {{ $posts[$i]->message }}</div>
                                                     <div class="timeline-footer">
-                                                        <a href="{{ route('posts.view', $posts[$i]->id) }}" class="btn btn-primary btn-sm">Ler mais</a>
+                                                        <a href="{{ route('blog.view', $posts[$i]->id) }}" class="btn btn-primary btn-sm">Ler mais</a>
                                                     </div>
                                                 </div>
                                             </div>

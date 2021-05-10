@@ -3,7 +3,7 @@
 @section('content')
     @component('admin.components.create')
         @slot('title', 'Criar categoria')
-        @slot('url', route('categories.store'))
+        @slot('url', route('admin.categories.store'))
         @slot('form')
             @include('admin.categories.form')
         @endslot

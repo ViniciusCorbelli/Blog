@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Blog</title>
+    <title>CodeJR | Painel Administrativo</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>

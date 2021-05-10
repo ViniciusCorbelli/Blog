@@ -2,10 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Message;
-use App\Post;
-use Illuminate\Support\Facades\Auth;
-
 class IndexController extends Controller
 {
     /**
@@ -15,7 +11,6 @@ class IndexController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
-        return view('index', compact('posts'));
+        return view('index');
     }
 }

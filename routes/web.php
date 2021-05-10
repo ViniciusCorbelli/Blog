@@ -16,18 +16,28 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', 'IndexController@index')->name('site.index');
-Route::get('/post/{post}/show', 'PostController@show')->name('posts.view');
-Route::put('/post/comment/{post}', 'CommentController@store')->name('comment.store');
+Route::get('/blog', 'BlogController@index')->name('blog.index');
+Route::get('/post/{post}', 'BlogController@show')->name('blog.view');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/home', 'HomeController@index')
+        ->name('admin.home')->middleware('Admin');
 
     Route::resource('/users', 'UserController')
-        ->names('users');
+        ->names('admin.users')->middleware('User');
 
     Route::resource('/categories', 'CategoryController')
-        ->names('categories');
+        ->names('admin.categories')->middleware('Admin');
 
     Route::resource('/posts', 'PostController')
-        ->names('posts');
+        ->names('admin.posts')->middleware('Post');
+
+    Route::get('/comments', 'CommentController@index')->name('admin.comments.index');
+    Route::put('/comments/{post}', 'CommentController@store')->name('blog.comment.store');
+    Route::get('/comments/{comment}/create', 'CommentController@create')->name('admin.comments.create');
+    Route::get('/comments/{comment}/show', 'CommentController@show')->name('admin.comments.show')->middleware('User');
+    Route::get('/comments/{comment}/edit', 'CommentController@edit')->name('admin.comments.edit')->middleware('User');
+    Route::put('/comments/{comment}/update/', 'CommentController@update')->name('admin.comments.update')->middleware('User');
+    Route::put('/comment/{comment}', 'CommentController@destroy')->name('admin.comments.destroy')->middleware('User');
+    Route::delete('/comment/{comment}', 'CommentController@destroyBlog')->name('admin.comments.destroyBlog')->middleware('User');
 });

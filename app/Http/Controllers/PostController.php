@@ -32,13 +32,6 @@ class PostController extends Controller
         $categories = Category::all();
         return view('admin.posts.create', compact('post', 'categories'));
     }
-
-    public function show(Post $post)
-    {
-        $comments = Comment::where('post_id', '=', $post->id)->paginate(10);
-        return view('post', compact('post', 'comments'));
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -51,7 +44,7 @@ class PostController extends Controller
         $data['user_id'] = Auth::user()->id;
         $data['date'] = date('d/m/Y H:i');
         post::create($data);
-        return redirect()->route('posts.index')->with('success', true);
+        return redirect()->route('admin.posts.index')->with('success', true);
     }
 
     /**
@@ -76,7 +69,7 @@ class PostController extends Controller
     public function update(PostRequest $request, post $post)
     {
         $post->update($request->all());
-        return redirect()->route('posts.index')->with('success', true);
+        return redirect()->route('admin.posts.index')->with('success', true);
     }
 
     /**
@@ -88,6 +81,6 @@ class PostController extends Controller
     public function destroy(post $post)
     {
         $post->delete();
-        return redirect()->route('posts.index')->with('success', true);
+        return redirect()->route('admin.posts.index')->with('success', true);
     }
 }

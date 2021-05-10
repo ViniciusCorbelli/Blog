@@ -39,7 +39,7 @@ class CategoryController extends Controller
     public function store(CategoryRequest $request)
     {
         $category = Category::create($request->all());
-        return redirect()->route('categories.index')->with('success', true);
+        return redirect()->route('admin.categories.index')->with('success', true);
     }
 
     /**
@@ -63,7 +63,7 @@ class CategoryController extends Controller
     public function update(CategoryRequest $request, Category $category)
     {
         $category->update($request->all());
-        return redirect()->route('categories.index')->with('success', true);
+        return redirect()->route('admin.categories.index')->with('success', true);
     }
 
     /**
@@ -75,6 +75,6 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
-        return redirect()->route('categories.index')->with('success', true);
+        return redirect()->route('admin.categories.index')->with('success', true);
     }
 }
