@@ -40,7 +40,7 @@ class UserController extends Controller
 
     public function show(User $user)
     {
-        $posts = Post::all();
+        $posts = Post::where('user_id', '=', $user->id)->get();
         return view('admin.users.show', compact('user', 'posts'));
     }
 

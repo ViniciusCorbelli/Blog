@@ -17,7 +17,7 @@
                                     <a href="{{ route('admin.categories.edit', $category->id) }}" class="btn btn-primary"><i
                                             class="fas fa-edit"></i></a>
                                 @endcan
-                                @can('delete', $user)
+                                @can('delete', $category)
                                     <form method="post" action="{{ route('admin.categories.destroy', $category->id) }}" class="form-delete">
                                         @csrf
                                         @method('delete')

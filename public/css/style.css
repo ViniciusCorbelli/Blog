@@ -37,6 +37,7 @@
 }
 
 .pagina {
+    min-height: 50vw;
     margin-top: 20px;
 }
 

@@ -76,7 +76,7 @@
                                                     <h3 class="timeline-header"><a
                                                             href="">{{ $posts[$i]->title }}</a>
                                                     </h3>
-                                                    <div class="timeline-body"> {{ $posts[$i]->message }}</div>
+                                                    <div class="timeline-body limite-rows"> {{ $posts[$i]->message }}</div>
                                                     <div class="timeline-footer">
                                                         <a href="{{ route('blog.view', $posts[$i]->id) }}" class="btn btn-primary btn-sm">Ler mais</a>
                                                     </div>
