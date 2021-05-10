@@ -55,6 +55,10 @@
     margin-bottom: 30px;
 }
 
+.post-main {
+    margin-bottom: 20px;
+}
+
 .post-main h1 {
     color: #000!important;
     margin-bottom: 2vw;
@@ -93,6 +97,7 @@
 }
 
 .post-title h5 {
+    margin-top: 10px;
     color: #fefff5;
 }
 
@@ -117,12 +122,47 @@
 .post-profile {
     margin-right: 20px;
     text-align: center;
-    max-height: 33vw!important;
 }
 
 .button-responder {
     float: right;
     margin-top: 20px;
+}
+
+
+/* Destaques */
+
+.destaque {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+.destaque h1 {
+    font-size: 32px;
+}
+
+.destaque:hover {
+    opacity: 0.8;
+    -webkit-transform: scale(1.02);
+    -ms-transform: scale(1.02);
+    transform: scale(1.02);
+    transition: 0.3s;
+}
+
+.destaque img {
+    width: 100%;
+}
+
+.destaque .destaque-text {
+    position: absolute;
+    bottom: 0;
+    background: rgb(0, 0, 0);
+    background: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.5970763305322129) 35%, rgba(0, 0, 0, 0.09007352941176472) 100%);
+    color: #f1f1f1;
+    width: 95%;
+    padding: 20px;
 }
 
 
@@ -235,4 +275,9 @@ hr {
         height: 70px;
         padding: 10px;
     }
+}
+
+
+}
+
 }

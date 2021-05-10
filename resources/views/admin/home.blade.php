@@ -44,7 +44,7 @@
                                         <i class="fas fa-users"></i>
                                     </div>
                                     <a href="{{ route('users.index') }}" class="small-box-footer">
-                                        Mais informaçõ <i class="fas fa-arrow-circle-right"></i>
+                                        Mais informações <i class="fas fa-arrow-circle-right"></i>
                                     </a>
                                 </div>
                             </div>

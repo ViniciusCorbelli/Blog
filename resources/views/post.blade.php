@@ -20,18 +20,22 @@
         </div>
         @foreach ($comments as $comment)
             <div class="row post-show">
-                <div class="col-3 postagem post-show post-profile">
-                    <h1>
-                        @if ($comment->user->access == 'Administrador') <strong>
-                        @endif {{ $comment->user->name }} </strong>
-                    </h1>
-                    <img src={{ asset('img/' . $comment->user->image) }} alt="Foto de perfil">
-                    <h6><strong> Membro desde </strong> {{ $comment->user->created_at }}</h6>
-                    <h6><strong> Tipo de usúario </strong> {{ $comment->user->access }}</h6>
-                    <h6><strong> Postado em </strong> {{ $comment->date }}</h6>
+                <div class="col-3">
+                    <div class="postagem post-show post-profile">
+                        <h1>
+                            @if ($comment->user->access == 'Administrador') <strong>
+                            @endif {{ $comment->user->name }} </strong>
+                        </h1>
+                        <img src={{ asset('img/' . $comment->user->image) }} alt="Foto de perfil">
+                        <h6><strong> Membro desde </strong> {{ $comment->user->created_at }}</h6>
+                        <h6><strong> Tipo de usúario </strong> {{ $comment->user->access }}</h6>
+                        <h6><strong> Postado em </strong> {{ $comment->date }}</h6>
+                    </div>
                 </div>
-                <div class="col-8 postagem post-show">
-                    <p> {{ $comment->message }} </p>
+                <div class="col-8">
+                    <div class="postagem post-show">
+                        <p> {{ $comment->message }} </p>
+                    </div>
                 </div>
             </div>
         @endforeach

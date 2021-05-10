@@ -3,7 +3,56 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-8">
+            <div class="col-lg destaque">
+                <a href="#">
+                    <img src="{{ asset('img/post.png') }}" alt="Post em destaque">
+                    <div class="destaque-text">
+                        <h1>Incrições abertas para o processo seletivo</h1>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm">
+                <div class="row">
+                    <div class="col-sm destaque">
+                        <a href="#">
+                            <img src="{{ asset('img/post.png') }}" alt="Post em destaque">
+                            <div class="destaque-text">
+                                <h1>Processo seletivo</h1>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-sm destaque">
+                        <a href="#">
+                            <img src="{{ asset('img/post.png') }}" alt="Post em destaque">
+                            <div class="destaque-text">
+                                <h1>Processo seletivo</h1>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm destaque">
+                        <a href="#">
+                            <img src="{{ asset('img/post.png') }}" alt="Post em destaque">
+                            <div class="destaque-text">
+                                <h1>Processo seletivo</h1>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-sm destaque">
+                        <a href="#">
+                            <img src="{{ asset('img/post.png') }}" alt="Post em destaque">
+                            <div class="destaque-text">
+                                <h1>Processo seletivo</h1>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-8">
                 @for ($i = count($posts) - 1; $i >= 0; $i--)
                     <div class="postagem post-author">
                         <img src="{{ asset('img/' . $posts[$i]->user->image) }}" alt="Foto de perfil">
@@ -24,10 +73,12 @@
                     </div>
                 @endfor
             </div>
-            <div class="col-4 postagem">
-                <a class="twitter-timeline" data-height="600" data-theme="light"
-                    href="https://twitter.com/Code_junior">Tweets por Code Empresa Júnior</a>
-                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            <div class="col-sm-4">
+                <div class="postagem">
+                    <a class="twitter-timeline" data-height="600" data-theme="light"
+                        href="https://twitter.com/Code_junior">Tweets por Code Empresa Júnior</a>
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
             </div>
         </div>
     </div>
