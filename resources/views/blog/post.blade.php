@@ -30,7 +30,7 @@
                 </div>
                 <div class="col-8">
                     <div class="postagem post-show">
-                        <p> {{ $post->message }} </p>
+                        <p> {!! $post->message !!} </p>
                         @if (Auth::user() != null && ($post->user_id == Auth::user()->id || Auth::user()->access == 'Administrador'))
                             <td>
                                 <a href="{{ route('admin.posts.edit', $post->id) }}" class="btn btn-primary"><i

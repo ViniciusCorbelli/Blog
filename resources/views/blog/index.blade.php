@@ -64,7 +64,7 @@
                         <h2> {{ $posts[$i]->title }} </h2>
                     </div>
                     <div class="postagem post-main">
-                        <p class="limite-rows"> {{ $posts[$i]->message }} </p>
+                        <p class="limite-rows"> {!! $posts[$i]->message !!}} </p>
                         <div class="post-continuar">
                             <a href="{{ route('blog.view', $posts[$i]->id) }}"><button type="button"
                                     class="btn btn-primary button-continue">Continue
