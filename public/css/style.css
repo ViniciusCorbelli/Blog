@@ -4,6 +4,9 @@
     background-color: #ececec;
 }
 
+
+/* Navbar*/
+
 .navbar {
     background-color: #251233!important;
 }
@@ -17,15 +20,15 @@
     transition: 0.3s;
 }
 
-.active {
-    color: #ffce07!important;
-    background-color: #251233!important;
-}
-
 .navbar-site li {
     font-size: 16px;
     padding-left: 30px;
     padding-right: 30px;
+}
+
+.active {
+    color: #ffce07!important;
+    background-color: #251233!important;
 }
 
 .logo img {
@@ -40,6 +43,9 @@
     min-height: 50vw;
     margin-top: 20px;
 }
+
+
+/* Postagens */
 
 .postagem {
     background-color: #fff;
