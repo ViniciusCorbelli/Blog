@@ -30,6 +30,7 @@ class UserStoreRequest extends FormRequest
             'is_admin' => 'required',
             'password' => 'required|string|min:6|confirmed',
             'password_confirmation' => 'required_with:password',
+            'born_date' => 'string',
         ];
     }
 
@@ -42,6 +43,7 @@ class UserStoreRequest extends FormRequest
             'is_admin' => 'tipo',
             'password' => 'senha',
             'password_confirmation' => 'confirmação de senha',
+            'born_date' => 'data de nascimento',
         ];
     }
 }
