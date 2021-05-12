@@ -53,28 +53,27 @@
         </div>
         <div class="row">
             <div class="col-sm-8">
-                @for ($i = count($posts) - 1; $i >= 0; $i--)
+                @foreach ($posts as $post)
                     <div class="postagem post-author">
-                        <img src="{{ asset('img/' . $posts[$i]->user->image) }}" alt="Foto de perfil">
-                        <h5>Postado por {{ $posts[$i]->user->name }} </h5>
-                        <h6>{{ $posts[$i]->date }}</h6>
+                        <img src="{{ asset('img/' . $post->user->image) }}" alt="Foto de perfil">
+                        <h5>Postado por {{ $post->user->name }} </h5>
+                        <h6>{{ $post->date }}</h6>
                     </div>
                     <div class="postagem post-title">
-                        <h5> {{ $posts[$i]->category->name }} </h5>
-                        <h2> {{ $posts[$i]->title }} </h2>
-                        <h3> {{ $posts[$i]->subtitle }} </h3>
+                        <h5> {{ $post->category->name }} </h5>
+                        <h2> {{ $post->title }} </h2>
+                        <h3> {{ $post->subtitle }} </h3>
                     </div>
                     <div class="postagem post-main">
-                        <img src="{{ asset('img/' . $posts[$i]->image) }}"
-                            class="elevation-2">
-                        <p class="limite-rows"> {!! $posts[$i]->message !!}} </p>
+                        <img src="{{ asset('img/' . $post->image) }}" class="elevation-2">
+                        <p class="limite-rows"> {!! $post->message !!}} </p>
                         <div class="post-continuar">
-                            <a href="{{ route('blog.view', $posts[$i]->id) }}"><button type="button"
+                            <a href="{{ route('blog.view', $post->id) }}"><button type="button"
                                     class="btn btn-primary button-continue">Continue
                                     lendo</button></a>
                         </div>
                     </div>
-                @endfor
+                @endforeach
             </div>
             <div class="col-sm-4">
                 <div class="postagem">

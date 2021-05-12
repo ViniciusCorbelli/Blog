@@ -296,6 +296,14 @@
 }
 
 
+/* Category */
+
+.categories a {
+    text-decoration: none!important;
+    color: #000;
+}
+
+
 /* Admin */
 
 .userStatus {
@@ -375,10 +383,6 @@
     background-color: #ffce07;
     color: #251233;
     transition: 0.5s;
-}
-
-hr {
-    border-top: 1px solid #f6f6f7;
 }
 
 .limite-rows {

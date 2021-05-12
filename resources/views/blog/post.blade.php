@@ -7,7 +7,8 @@
             <ol class="breadcrumb breadcrumb-fill2">
                 <li><a href="{{ route('site.index') }}"><i class="fa fa-home"></i></a></li>
                 <li><a href="{{ route('blog.index') }}">Blog</a></li>
-                <li>{{ $post->category->name }}</li>
+                <li><a href="{{ route('blog.category') }}">Categorias</a></li>
+                <li><a href="{{ route('blog.category.view', $post->category->id) }}">{{ $post->category->name }}</a></li>
                 <li class="active-breadcrumb"> {{ $post->title }}</li>
             </ol>
         </div>
@@ -30,8 +31,7 @@
                 </div>
                 <div class="col-8">
                     <div class="postagem post-show">
-                        <img src="{{ asset('img/' . $post->image) }}"
-                        class="elevation-2">
+                        <img src="{{ asset('img/' . $post->image) }}" class="elevation-2">
                         <p> {!! $post->message !!} </p>
                         @if (Auth::user() != null && ($post->user_id == Auth::user()->id || Auth::user()->access == 'Administrador'))
                             <td>

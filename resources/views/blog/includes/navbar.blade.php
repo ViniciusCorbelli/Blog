@@ -10,6 +10,9 @@
             <li class="nav-item {{ Route::is('blog*') ? 'navegation-active' : '' }}">
                 <a class="nav-link navegation" href="{{ route('blog.index') }}">Blog</a>
             </li>
+            <li class="nav-item {{ Route::is('blog.category') ? 'navegation-active' : '' }}">
+                <a class="nav-link navegation" href="{{ route('blog.category') }}">Categorias</a>
+            </li>
             <li class="nav-item {{ Route::is('site.contact') ? 'navegation-active' : '' }}">
                 <a class="nav-link navegation" href="{{ route('site.contact') }}">Contato</a>
             </li>
