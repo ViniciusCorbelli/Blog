@@ -43,6 +43,15 @@ class PostController extends Controller
         $data = $request->all();
         $data['user_id'] = Auth::user()->id;
         $data['date'] = date('d/m/Y H:i');
+        if($request->hasfile('image')){
+            $extesion = $request->image->getClientOriginalExtension();
+            $slug = str_slug($request->name);
+            $nameFile = "{$slug}.{$extesion}";
+            $request->image->storeAs('public/img',$nameFile);
+            $data['image'] = 'img/'.$nameFile;
+        }else{
+            unset($data['image']);
+        }
         post::create($data);
         return redirect()->route('admin.posts.index')->with('success', true);
     }
@@ -68,7 +77,17 @@ class PostController extends Controller
      */
     public function update(PostRequest $request, post $post)
     {
-        $post->update($request->all());
+        $data = $request->all();
+        if($request->hasfile('image')){
+            $extesion = $request->image->getClientOriginalExtension();
+            $slug = str_slug($request->name);
+            $nameFile = "{$slug}.{$extesion}";
+            $request->image->storeAs('public/img',$nameFile);
+            $data['image'] = 'img/'.$nameFile;
+        }else{
+            unset($data['image']);
+        }
+        $post->update($data);
         return redirect()->route('admin.posts.index')->with('success', true);
     }
 

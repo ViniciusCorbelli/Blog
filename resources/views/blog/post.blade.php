@@ -30,6 +30,8 @@
                 </div>
                 <div class="col-8">
                     <div class="postagem post-show">
+                        <img src="{{ asset('img/' . $post->image) }}"
+                        class="elevation-2">
                         <p> {!! $post->message !!} </p>
                         @if (Auth::user() != null && ($post->user_id == Auth::user()->id || Auth::user()->access == 'Administrador'))
                             <td>

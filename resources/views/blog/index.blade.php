@@ -62,8 +62,11 @@
                     <div class="postagem post-title">
                         <h5> {{ $posts[$i]->category->name }} </h5>
                         <h2> {{ $posts[$i]->title }} </h2>
+                        <h3> {{ $posts[$i]->subtitle }} </h3>
                     </div>
                     <div class="postagem post-main">
+                        <img src="{{ asset('img/' . $posts[$i]->image) }}"
+                            class="elevation-2">
                         <p class="limite-rows"> {!! $posts[$i]->message !!}} </p>
                         <div class="post-continuar">
                             <a href="{{ route('blog.view', $posts[$i]->id) }}"><button type="button"

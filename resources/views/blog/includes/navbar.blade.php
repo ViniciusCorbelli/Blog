@@ -4,11 +4,14 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-site">
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item {{ Route::is('site*') ? 'navegation-active' : '' }}">
+            <li class="nav-item {{ Route::is('site.index') ? 'navegation-active' : '' }}">
                 <a class="nav-link navegation" href="{{ route('site.index') }}">Início</a>
             </li>
             <li class="nav-item {{ Route::is('blog*') ? 'navegation-active' : '' }}">
                 <a class="nav-link navegation" href="{{ route('blog.index') }}">Blog</a>
+            </li>
+            <li class="nav-item {{ Route::is('site.contact') ? 'navegation-active' : '' }}">
+                <a class="nav-link navegation" href="{{ route('site.contact') }}">Contato</a>
             </li>
         </ul>
         <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">

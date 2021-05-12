@@ -100,8 +100,14 @@
     color: #fefff5;
 }
 
+.post-title h3 {
+    font-size: 14px;
+    color: #fefff5;
+}
+
 .post-title h5 {
-    margin-top: 10px;
+    font-size: 10px;
+    margin-top: 8px;
     color: #fefff5;
 }
 
@@ -278,6 +284,18 @@
 }
 
 
+/* Contact */
+
+.form-contact {
+    margin-right: 180px;
+    margin-left: 180px;
+}
+
+.phone-contact {
+    margin-top: 30px;
+}
+
+
 /* Admin */
 
 .userStatus {
@@ -376,6 +394,7 @@ hr {
 }
 
 .site-footer {
+    margin-top: 20px;
     background-color: #2e3038;
     text-align: center;
 }
