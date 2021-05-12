@@ -36,10 +36,9 @@
                         <h3 class="card-title">Informações</h3>
                     </div>
                     <div class="card-body">
-                        <strong><i class="fas fa-book mr-1"></i> Data de Nascimento</strong>
-                        <p class="text-muted">
-                            {{ date('d/m/Y', strtotime($user->born_date)) }}
-                        </p>
+                        <p class="text-muted"><strong> Membro desde </strong> {{ date('d/m/Y', strtotime($user->created_at)) }}</h6>
+                        <p class="text-muted"><strong> Tipo de usúario </strong> {{ $user->access }}</h6>
+
                     </div>
                     <!-- /.card-body -->
                 </div>
