@@ -45,15 +45,15 @@
                     </a>
                 </li>
                 @if (Auth::user()->access == 'Administrador')
-                <li class="nav-item has-treeview ">
-                    <a href="{{ route('admin.home') }}"
-                        class="nav-link navegation {{ Route::is('admin.home') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p>
-                            Dashboard
-                        </p>
-                    </a>
-                </li>
+                    <li class="nav-item has-treeview ">
+                        <a href="{{ route('admin.home') }}"
+                            class="nav-link navegation {{ Route::is('admin.home') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                Dashboard
+                            </p>
+                        </a>
+                    </li>
                     <li class="nav-item has-treeview">
                         <a href="{{ route('admin.users.index') }}"
                             class="nav-link navegation {{ Route::is('admin.users*') ? 'active' : '' }}">
@@ -64,15 +64,17 @@
                         </a>
                     </li>
                 @endif
-                <li class="nav-item has-treeview">
-                    <a href="{{ route('admin.posts.index') }}"
-                        class="nav-link navegation {{ Route::is('admin.posts*') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-envelope-square"></i>
-                        <p>
-                            Publicações
-                        </p>
-                    </a>
-                </li>
+                @if (Auth::user()->access != 'Leitor')
+                    <li class="nav-item has-treeview">
+                        <a href="{{ route('admin.posts.index') }}"
+                            class="nav-link navegation {{ Route::is('admin.posts*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-envelope-square"></i>
+                            <p>
+                                Publicações
+                            </p>
+                        </a>
+                    </li>
+                @endif
                 <li class="nav-item has-treeview">
                     <a href="{{ route('admin.comments.index') }}"
                         class="nav-link navegation {{ Route::is('admin.comments*') ? 'active' : '' }}">

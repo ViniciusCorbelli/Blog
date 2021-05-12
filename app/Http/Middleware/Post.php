@@ -16,6 +16,9 @@ class Post
      */
     public function handle($request, Closure $next)
     {
+        if ($request->post == NULL && Auth::user()->access == "Leitor") {
+            return redirect()->route('admin.users.show', Auth::user()->id)->withMessage('Você não possui acesso à está página!');
+        }
         if (Auth::user()->access == "Administrador" || $request->post == NULL || $request->post->user_id == Auth::user()->id) {
             return $next($request);
         }

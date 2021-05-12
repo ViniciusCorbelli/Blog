@@ -12,6 +12,7 @@
             <label for="access" class="required">Tipo </label>
             <select name="access" id="access" class="form-control select2" value="{{ old('access', $user->access) }}">
                 <option></option>
+                <option value="Leitor">Leitor</option>
                 <option value="Autor">Autor</option>
                 <option value="Administrador">Administrador</option>
             </select>
