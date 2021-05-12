@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', 'SiteController@index')->name('site.index');
-Route::get('/contact', 'SiteController@index')->name('site.contact');
+Route::get('/contact', 'SiteController@contact')->name('site.contact');
 Route::get('/blog', 'BlogController@index')->name('blog.index');
 Route::get('/blog/search/', 'BlogController@search')->name('blog.search');
 Route::get('/blog/categories', 'BlogController@categories')->name('blog.category');
