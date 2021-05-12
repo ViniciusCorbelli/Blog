@@ -22,7 +22,7 @@
                     <a class="dropdown-item {{ Route::is('blog.index') ? 'navegation-active' : '' }}" href="{{ route('blog.index') }}">Todos os posts</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item {{ Route::is('blog.category*') ? 'navegation-active' : '' }}" href="{{ route('blog.category') }}">Categorias</a>
-                    <a class="dropdown-item {{ Route::is('blog.date*') ? 'navegation-active' : '' }}" href="{{ route('blog.date') }}">Data</a>
+                    <a class="dropdown-item {{ Route::is('blog.date*') ? 'navegation-active' : '' }}" href="{{ route('blog.date') }}">Datas</a>
                 </div>
             </li>
             <li class="nav-item {{ Route::is('site.contact') ? 'navegation-active' : '' }}">

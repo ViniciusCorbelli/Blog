@@ -20,8 +20,8 @@ Route::get('/contact', 'SiteController@index')->name('site.contact');
 Route::get('/blog', 'BlogController@index')->name('blog.index');
 Route::get('/blog/categories', 'BlogController@categories')->name('blog.category');
 Route::get('/blog/category/{category}', 'BlogController@category')->name('blog.category.view');
-Route::get('/blog/dates', 'BlogController@categories')->name('blog.date');
-Route::get('/blog/date/{date}', 'BlogController@category')->name('blog.date.view');
+Route::get('/blog/dates', 'BlogController@dates')->name('blog.date');
+Route::get('/blog/date/{post}', 'BlogController@date')->name('blog.date.view');
 Route::get('/post/{post}', 'BlogController@show')->name('blog.view');
 
 Route::middleware('auth')->group(function () {
