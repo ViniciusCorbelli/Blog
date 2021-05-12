@@ -13,7 +13,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="postagem categories">
-                    <h1>Posts de {{ $category->name }}</h1>
+                    <h1>Posts em <strong> {{ $category->name }} </strong> </h1>
                     @foreach ($posts as $post)
                         <hr>
                         @php
@@ -23,7 +23,7 @@
                         <div class="row">
                             <div class="col-2">
                                 <a href="{{ route('blog.view', $post->id) }}">
-                                    <img src="{{ asset('img/' . $post->image) }}" class="elevation-2">
+                                    <img src="{{ asset('img/posts/' . $post->image) }}" class="elevation-2">
                                 </a>
                             </div>
                             <div class="col-6">
@@ -45,6 +45,7 @@
                             </div>
                         </div>
                     @endforeach
+                    {{ $posts->links() }}
                 </div>
             </div>
         </div>

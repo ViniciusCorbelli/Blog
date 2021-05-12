@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Comment;
 use App\Post;
 
@@ -9,7 +10,7 @@ class BlogController extends Controller
 {
     public function index()
     {
-        $posts = Post::all()->sortByDesc("id");
+        $posts = Post::orderBy('created_at', 'desc')->paginate(10);
         return view('blog.index', compact('posts'));
     }
 
@@ -17,5 +18,17 @@ class BlogController extends Controller
     {
         $comments = Comment::where('post_id', '=', $post->id)->paginate(10);
         return view('blog.post', compact('post', 'comments'));
+    }
+
+    public function categories()
+    {
+        $categories = Category::all();
+        return view('blog.categories', compact('categories'));
+    }
+
+    public function category(Category $category)
+    {
+        $posts = Post::where('category_id', '=', $category->id)->orderBy('created_at', 'desc')->paginate(10);
+        return view('blog.category', compact('posts', 'category'));
     }
 }

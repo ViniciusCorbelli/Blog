@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Message;
 use App\Post;
 use App\User;
-use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {

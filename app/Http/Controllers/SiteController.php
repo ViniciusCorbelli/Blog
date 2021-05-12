@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-class IndexController extends Controller
+class SiteController extends Controller
 {
     /**
      * Show the application dashboard.
@@ -12,5 +12,10 @@ class IndexController extends Controller
     public function index()
     {
         return view('index');
+    }
+
+    public function contact()
+    {
+        return view('contact');
     }
 }

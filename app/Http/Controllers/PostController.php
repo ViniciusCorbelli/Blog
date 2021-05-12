@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Category;
-use App\Comment;
 use App\Http\Requests\postRequest;
 use App\Post;
 use Illuminate\Support\Facades\Auth;
@@ -43,13 +42,13 @@ class PostController extends Controller
         $data = $request->all();
         $data['user_id'] = Auth::user()->id;
         $data['date'] = date('d/m/Y H:i');
-        if($request->hasfile('image')){
+        if ($request->hasfile('image')) {
             $extesion = $request->image->getClientOriginalExtension();
-            $slug = str_slug($request->name);
+            $slug = str_slug($request->title . $request->id);
             $nameFile = "{$slug}.{$extesion}";
-            $request->image->storeAs('public/img',$nameFile);
-            $data['image'] = 'img/'.$nameFile;
-        }else{
+            $request->image->storeAs('public/img/posts', $nameFile);
+            $data['image'] = 'img/' . $nameFile;
+        } else {
             unset($data['image']);
         }
         post::create($data);
@@ -78,13 +77,13 @@ class PostController extends Controller
     public function update(PostRequest $request, post $post)
     {
         $data = $request->all();
-        if($request->hasfile('image')){
+        if ($request->hasfile('image')) {
             $extesion = $request->image->getClientOriginalExtension();
-            $slug = str_slug($request->name);
+            $slug = str_slug($request->title . $request->id);
             $nameFile = "{$slug}.{$extesion}";
-            $request->image->storeAs('public/img',$nameFile);
-            $data['image'] = 'img/'.$nameFile;
-        }else{
+            $request->image->storeAs('public/img/posts', $nameFile);
+            $data['image'] = 'img/' . $nameFile;
+        } else {
             unset($data['image']);
         }
         $post->update($data);
