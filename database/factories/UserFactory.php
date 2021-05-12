@@ -13,8 +13,8 @@ $factory->define(User::class, function (Faker $faker) {
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
         'email_verified_at' => now(),
-        'cpf' => $faker->cpf,
-        'access' => 'Visitante',
+        'verified' => 0,
+        'access' => 'Autor',
         'password' => bcrypt('123456'),
         'remember_token' => Str::random(10),
     ];

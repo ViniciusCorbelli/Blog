@@ -26,7 +26,6 @@ class UserStoreRequest extends FormRequest
         return [
             'name' => 'required|string',
             'email' => 'required|email|string|unique:users',
-            'cpf' => 'required|string|unique:users',
             'is_admin' => 'required',
             'password' => 'required|string|min:6|confirmed',
             'password_confirmation' => 'required_with:password',
@@ -39,7 +38,6 @@ class UserStoreRequest extends FormRequest
         return [
             'name' => 'nome',
             'email' => 'e-mail',
-            'cpf' => 'cpf',
             'is_admin' => 'tipo',
             'password' => 'senha',
             'password_confirmation' => 'confirmação de senha',

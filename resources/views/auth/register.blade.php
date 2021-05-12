@@ -43,17 +43,6 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="cpf">CPF</label>
-                        <input id="cpf" type="text" class="form-control @error('cpf') is-invalid @enderror" name="cpf"
-                            value="{{ old('cpf') }}" required autocomplete="cpf">
-
-                        @error('cpf')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                    <div class="form-group">
                         <label class="required" for="password">Senha</label>
                         <div class="input-group">
                             <span class="input-group-text" onclick="visiblePassword('password' ,'iconPassword')">
@@ -79,6 +68,10 @@
                             <input id="password-confirm" type="password" class="form-control" name="password_confirmation"
                                 required autocomplete="new-password">
                         </div>
+                    </div>
+                    <div class="form-group">  
+                        <label for="image">Imagem </label>
+                        <input type="file" accept="image/*" class="form-control-file" name="image">
                     </div>
                     <div class="buttons-login">
                         <a href="{{ route('login') }}"><button type="button" class="buttons button-registrar">Cancelar</button></a>

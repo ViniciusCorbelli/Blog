@@ -28,6 +28,7 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('/users', 'UserController')
         ->names('admin.users')->middleware('User');
+    Route::put('/users/pendency/{user}', 'UserController@pendency')->name('admin.users.pendency')->middleware('Admin');
 
     Route::resource('/categories', 'CategoryController')
         ->names('admin.categories')->middleware('Admin');

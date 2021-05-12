@@ -17,7 +17,18 @@
                                 <td>{{ $user->access }}</td>
 
                                 <td class="options">
-
+                                    @can('delete', $user)
+                                        @if ($user->verified == 0)
+                                            <form class="form-save" action="{{ route('admin.users.pendency', $user->id) }}" method="post">
+                                                @csrf
+                                                @method('put')
+                                                <input type="hidden" value='1' name='verified'>
+                                                <button type="submit" class="btn btn-warning "> <i class="fas fa-check"></i></button>
+                                            </form>
+                                        @else
+                                            <button type="submit" class="btn btn-success "> <i class="fas fa-check"></i></button>
+                                        @endif
+                                    @endcan
                                     @can('update', $user)
                                         <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-primary"><i
                                                 class="fas fa-edit"></i></a>

@@ -26,7 +26,6 @@ class UserUpdateRequest extends FormRequest
         return [
             'name' => 'required|string',
             'email' => 'required|email|string|unique:users,email,' . $this->user->id,
-            'cpf' => 'required|string|unique:users,cpf,' . $this->user->id,
             'is_admin' => 'nullable',
             'password' => 'required|string|min:6|confirmed',
             'password_confirmation' => 'required_with:password',
@@ -38,7 +37,6 @@ class UserUpdateRequest extends FormRequest
         return [
             'name' => 'nome',
             'email' => 'e-mail',
-            'cpf' => 'cpf',
             'is_admin' => 'tipo',
             'password' => 'senha',
             'password_confirmation' => 'confirmação de senha',
