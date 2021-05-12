@@ -18,6 +18,7 @@ Auth::routes();
 Route::get('/', 'SiteController@index')->name('site.index');
 Route::get('/contact', 'SiteController@index')->name('site.contact');
 Route::get('/blog', 'BlogController@index')->name('blog.index');
+Route::get('/blog/search/', 'BlogController@search')->name('blog.search');
 Route::get('/blog/categories', 'BlogController@categories')->name('blog.category');
 Route::get('/blog/category/{category}', 'BlogController@category')->name('blog.category.view');
 Route::get('/blog/dates', 'BlogController@dates')->name('blog.date');

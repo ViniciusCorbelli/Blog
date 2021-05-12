@@ -29,8 +29,9 @@
                 <a class="nav-link navegation" href="{{ route('site.contact') }}">Contato</a>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Buscar..." aria-label="Search">
+
+        <form class="form-inline my-2 my-lg-0" action="{{ route('blog.search') }}" method="GET">
+            <input class="form-control mr-sm-2" name="search" type="search" placeholder="Buscar..." aria-label="Search" required>
             <button class="buttons button-registrar my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
         </form>
 

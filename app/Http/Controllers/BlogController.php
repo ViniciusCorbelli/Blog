@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Comment;
 use App\Post;
-use Ramsey\Uuid\Type\Integer;
+use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
@@ -44,5 +44,16 @@ class BlogController extends Controller
         $months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
         $month = $months[(date('m', strtotime($post->created_at))) - 1 + 1];
         return view('blog.date.view', compact('month', 'posts'));
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request->input('search');
+        $posts = Post::query()
+            ->where('title', 'LIKE', "%{$search}%")
+            ->orWhere('message', 'LIKE', "%{$search}%")
+            ->orderBy('created_at', 'desc')->paginate(10);
+
+        return view('blog.index', compact('posts'));
     }
 }
