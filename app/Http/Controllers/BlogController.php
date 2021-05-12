@@ -24,25 +24,25 @@ class BlogController extends Controller
     public function categories()
     {
         $categories = Category::all();
-        return view('blog.category.all', compact('categories'));
+        return view('blog.category.index', compact('categories'));
     }
 
     public function category(Category $category)
     {
         $posts = Post::where('category_id', '=', $category->id)->orderBy('created_at', 'desc')->paginate(10);
-        return view('blog.category.category', compact('posts', 'category'));
+        return view('blog.category.view', compact('posts', 'category'));
     }
 
     public function dates()
     {
-        return view('blog.date.all');
+        return view('blog.date.index');
     }
 
     public function date(Post $post)
     {
         $posts = Post::whereMonth('created_at', date('m', strtotime($post->created_at)))->orderBy('created_at', 'desc')->paginate(10);
         $months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
-        $month = $months[(date('m', strtotime($post->created_at) - 1))];
-        return view('blog.date.date', compact('month', 'posts'));
+        $month = $months[(date('m', strtotime($post->created_at))) - 1 + 1];
+        return view('blog.date.view', compact('month', 'posts'));
     }
 }
