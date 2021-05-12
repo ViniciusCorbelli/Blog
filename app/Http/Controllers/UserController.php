@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
 use App\Http\Requests\UserStoreRequest;
 use App\Http\Requests\UserUpdateRequest;
 use App\Post;
@@ -41,7 +42,15 @@ class UserController extends Controller
     public function show(User $user)
     {
         $posts = Post::where('user_id', '=', $user->id)->get();
-        return view('admin.users.show', compact('user', 'posts'));
+        $comments = Comment::where('user_id', '=', $user->id)->get();
+
+        $activities = $posts;
+        foreach ($comments as $comment) {
+            $activities->push($comment);
+        }
+
+        $activities = $activities->sortByDesc('date');
+        return view('admin.users.show', compact('user', 'activities'));
     }
 
     /**

@@ -48,41 +48,65 @@
             <!-- /.col -->
             <div class="col-md-9">
                 <div class="card">
-                    <div class="card-header p-2">
-                        <ul class="nav nav-pills">
-                            <li class="nav-item"><a class="nav-link active" href="#schedule" data-toggle="tab">Posts
-                                    recentes</a></li>
-                        </ul>
-                    </div><!-- /.card-header -->
                     <div class="card-body">
                         <div class="tab-content">
                             <div class="row">
                                 <div class="col-12">
                                     <div>
                                         <hr>
-                                        <h1>Últimos posts</h1>
+                                        <h1>Atividades recentes</h1>
                                     </div>
                                     <div class="timeline">
-                                        @for ($i = count($posts) - 1; $i >= 0; $i--)
-                                            <div class="time-label">
-                                                <span
-                                                    class="bg-green">{{ date('d/m/Y', strtotime($posts[$i]->date)) }}</span>
-                                            </div>
-                                            <div>
-                                                <i class="fas fa-mail-bulk bg-dark"></i>
-                                                <div class="timeline-item">
-                                                    <span class="time"><i class="fas fa-clock"></i>
-                                                        {{ date('H:i', strtotime($posts[$i]->date)) }}</span>
-                                                    <h3 class="timeline-header"><a
-                                                            href="">{{ $posts[$i]->title }}</a>
-                                                    </h3>
-                                                    <div class="timeline-body limite-rows"> {{ $posts[$i]->message }}</div>
-                                                    <div class="timeline-footer">
-                                                        <a href="{{ route('blog.view', $posts[$i]->id) }}" class="btn btn-primary btn-sm">Ler mais</a>
+                                        @php $lastDate = 0 @endphp
+                                        @foreach ($activities as $activity)
+                                            @if ($activity->title != null)
+                                                @if (date('d/m/Y', strtotime($activity->date)) !== $lastDate)
+                                                    <div class="time-label">
+                                                        <span
+                                                            class="bg-green">{{ date('d/m/Y', strtotime($activity->date)) }}</span>
+                                                    </div>
+                                                @endif
+                                                <div>
+                                                    <i class="fas fa-mail-bulk bg-dark"></i>
+                                                    <div class="timeline-item">
+                                                        <span class="time"><i class="fas fa-clock"></i>
+                                                            {{ date('H:i', strtotime($activity->date)) }}</span>
+                                                        <h3 class="timeline-header">Publicou: <a
+                                                                href="{{ route('blog.view', $activity->id) }}">{{ $activity->title }}</a>
+                                                        </h3>
+                                                        <div class="timeline-body limite-rows"> {{ $activity->abstract }}
+                                                        </div>
+                                                        <div class="timeline-footer">
+                                                            <a href="{{ route('blog.view', $activity->id) }}"
+                                                                class="btn btn-primary btn-sm">Ler mais</a>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        @endfor
+                                            @else
+                                                @if (date('d/m/Y', strtotime($activity->date)) != $lastDate)
+                                                    <div class="time-label">
+                                                        <span
+                                                            class="bg-green">{{ date('d/m/Y', strtotime($activity->date)) }}</span>
+                                                    </div>
+                                                @endif
+                                                <div>
+                                                    <i class="fas fa-pen bg-dark"></i>
+                                                    <div class="timeline-item">
+                                                        <span class="time"><i class="fas fa-clock"></i>
+                                                            {{ date('H:i', strtotime($activity->date)) }}</span>
+                                                        <h3 class="timeline-header">Comentou em: <a href="{{ route('blog.view', $activity->post->id) }}">{{ $activity->post->title }}</a>
+                                                        </h3>
+                                                        <div class="timeline-body limite-rows"> {{ $activity->message }}
+                                                        </div>
+                                                        <div class="timeline-footer">
+                                                            <a href="{{ route('blog.view', $activity->post->id) }}"
+                                                                class="btn btn-primary btn-sm">Ler mais</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                            @php $lastDate = date('d/m/Y', strtotime($activity->date)) @endphp
+                                        @endforeach
                                         <div>
                                             <i class="fas fa-clock bg-gray"></i>
                                         </div>

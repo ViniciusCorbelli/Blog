@@ -75,15 +75,6 @@
                         </a>
                     </li>
                 @endif
-                <li class="nav-item has-treeview">
-                    <a href="{{ route('admin.comments.index') }}"
-                        class="nav-link navegation {{ Route::is('admin.comments*') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-pen"></i>
-                        <p>
-                            Comentarios
-                        </p>
-                    </a>
-                </li>
                 @if (Auth::user()->access == 'Administrador')
                     <li class="nav-item has-treeview">
                         <a href="{{ route('admin.categories.index') }}"

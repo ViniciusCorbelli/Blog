@@ -36,7 +36,6 @@ Route::middleware('auth')->group(function () {
     Route::resource('/posts', 'PostController')
         ->names('admin.posts')->middleware('Post');
 
-    Route::get('/comments', 'CommentController@index')->name('admin.comments.index');
     Route::put('/comments/{post}', 'CommentController@store')->name('blog.comment.store');
     Route::get('/comments/{comment}/create', 'CommentController@create')->name('admin.comments.create');
     Route::get('/comments/{comment}/show', 'CommentController@show')->name('admin.comments.show')->middleware('User');

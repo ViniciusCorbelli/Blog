@@ -66,7 +66,7 @@
                     </div>
                     <div class="postagem post-main">
                         <img src="{{ asset('img/' . $post->image) }}" class="elevation-2">
-                        <p class="limite-rows"> {!! $post->message !!}} </p>
+                        <p> {!! $post->abstract !!} </p>
                         <div class="post-continuar">
                             <a href="{{ route('blog.view', $post->id) }}"><button type="button"
                                     class="btn btn-primary button-continue">Continue
