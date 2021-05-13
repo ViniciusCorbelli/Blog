@@ -18,7 +18,7 @@
                         $countPost = [count(App\Post::whereMonth('created_at', '01')->get()), count(App\Post::whereMonth('created_at', '02')->get()), count(App\Post::whereMonth('created_at', '03')->get()), count(App\Post::whereMonth('created_at', '04')->get()), count(App\Post::whereMonth('created_at', '05')->get()), count(App\Post::whereMonth('created_at', '06')->get()), count(App\Post::whereMonth('created_at', '07')->get()), count(App\Post::whereMonth('created_at', '08')->get()), count(App\Post::whereMonth('created_at', '09')->get()), count(App\Post::whereMonth('created_at', '10')->get()), count(App\Post::whereMonth('created_at', '11')->get()), count(App\Post::whereMonth('created_at', '12')->get())];
                     @endphp
 
-                    @for ($i = 0; $i < 11; $i++)
+                    @for ($i = 0; $i < 12; $i++)
                         @php
                             $mes = $i+1;
                             if ($mes < 10)
