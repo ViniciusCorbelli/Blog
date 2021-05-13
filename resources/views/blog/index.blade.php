@@ -2,74 +2,47 @@
 
 @section('content')
     @php
-    $countPost = count($posts) - 1;
-    if ($countPost > -1) {
-        $min = 0;
-        $dest1 = mt_rand(0, $countPost);
-        $dest2 = mt_rand(0, $countPost);
-        $dest3 = mt_rand(0, $countPost);
-        $dest4 = mt_rand(0, $countPost);
-        $dest5 = mt_rand(0, $countPost);
-    }
+    $countPost = count($posts);
+    $topPost = App\Post::orderBy('views', 'desc')->get();
     @endphp
     <div class="container">
-        @if ($countPost > -1)
-            <div class="row">
-                <div class="col-lg destaque">
-                    <a href="#">
-                        <img src="{{ asset('/storage/img/posts/' . $posts[$dest1]->image) }}" alt="Post em destaque">
+        <div class="row">
+            @if ($countPost > 0)
+                <div class="col-lg destaque destaque-1">
+                    <a href="{{ route('blog.view', $topPost[0]->id) }}">
+                        <img src="{{ asset('/storage/img/posts/' . $topPost[0]->image) }}" alt="Post em destaque">
                         <div class="destaque-text">
-                            <h1>{{ $posts[$dest1]->title }}</h1>
+                            <h1>{{ $topPost[0]->title }}</h1>
                         </div>
                     </a>
                 </div>
-                <div class="col-sm">
-                    <div class="row">
-                        <div class="col-sm destaque">
-                            <a href="#">
-                                <img src="{{ asset('/storage/img/posts/' . $posts[$dest2]->image) }}" alt="Post em destaque">
-                                <div class="destaque-text">
-                                    <h1>{{ $posts[$dest2]->title }}</h1>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-sm destaque">
-                            <a href="#">
-                                <img src="{{ asset('/storage/img/posts/' . $posts[$dest3]->image) }}" alt="Post em destaque">
-                                <div class="destaque-text">
-                                    <h1>{{ $posts[$dest3]->title }}</h1>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
+            @endif
 
-                    <div class="row">
-                        <div class="col-sm destaque">
-                            <a href="#">
-                                <img src="{{ asset('/storage/img/posts/' . $posts[$dest4]->image) }}" alt="Post em destaque">
-                                <div class="destaque-text">
-                                    <h1>{{ $posts[$dest4]->title }}</h1>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-sm destaque">
-                            <a href="#">
-                                <img src="{{ asset('/storage/img/posts/' . $posts[$dest5]->image) }}" alt="Post em destaque">
-                                <div class="destaque-text">
-                                    <h1>{{ $posts[$dest5]->title }}</h1>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
+            <div class="col-sm">
+                <div class="row">
+                    @for ($i = 1; $i < 5; $i++)
+                        @if ($countPost > $i)
+                            <div class="col-sm-6 destaque destaque-4">
+                                <a href={{ route('blog.view', $topPost[$i]->id) }}>
+                                    <img src="{{ asset('/storage/img/posts/' . $topPost[$i]->image) }}"
+                                        alt="Post em destaque">
+                                    <div class="destaque-text">
+                                        <h1>{{ $topPost[$i]->title }}</h1>
+                                    </div>
+                                </a>
+                            </div>
+                        @endif
+                    @endfor
                 </div>
             </div>
-        @endif
+        </div>
+
         <div class="row">
             <div class="col-sm-8">
-                @if ($countPost > -1)
+                @if ($countPost > 0)
                     @foreach ($posts as $post)
                         <div class="postagem post-author">
-                            <img src="{{ asset('app/public/img/user/' . $post->user->image) }}" alt="Foto de perfil">
+                            <img src="{{ asset('storage/img/user/' . $post->user->image) }}" alt="Foto de perfil">
                             <h5>Postado por {{ $post->user->name }} </h5>
                             <h6>{{ $post->date }}</h6>
                         </div>

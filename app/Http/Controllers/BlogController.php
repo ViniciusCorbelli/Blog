@@ -18,6 +18,10 @@ class BlogController extends Controller
     public function show(Post $post)
     {
         $comments = Comment::where('post_id', '=', $post->id)->paginate(10);
+        if ($comments->currentPage() == 1) {
+            $post->views++;
+            $post->save();
+        }
         return view('blog.post', compact('post', 'comments'));
     }
 

@@ -31,13 +31,19 @@
                                     <h6> <Strong> {{ $post->title }} </Strong> </h6>
                                     <p> Por {{ $post->user->name }}, {{ $post->date }}</p>
                                 </a>
-                                <p> <strong> <i class="fas fa-comments"></i> {{ $countComments }} respostas </strong>
-                                </p>
+                                <div class="statistics-post">
+                                    <p> <strong> <i class="fas fa-comments"></i> {{ $countComments }} respostas
+                                        </strong> </p>
+
+                                    <p> <strong> <i class="fas fa-eye"></i> {{ $post->views }} visualização
+                                        </strong> </p>
+                                </div>
                             </div>
                             <div class="col-4 text-right">
                                 <h6>Última resposta</h6>
                                 @if ($lastComment->first() != null)
-                                    <h6>{{ $lastComment->first()->user->name }}, {{ $lastComment->first()->date }}
+                                    <h6>{{ $lastComment->first()->user->name }},
+                                        {{ $lastComment->first()->date }}
                                     </h6>
                                 @else
                                     <h6>{{ $post->user->name }}, {{ $post->date }}</h6>
