@@ -36,14 +36,6 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-                <li class="nav-item has-treeview ">
-                    <a href="{{ route('site.index') }}" class="nav-link navegation">
-                        <i class="nav-icon fas fa-house-user"></i>
-                        <p>
-                            Página inicial
-                        </p>
-                    </a>
-                </li>
                 @if (Auth::user()->access == 'Administrador')
                     <li class="nav-item has-treeview ">
                         <a href="{{ route('admin.home') }}"
@@ -86,6 +78,14 @@
                         </a>
                     </li>
                 @endif
+                <li class="nav-item has-treeview ">
+                    <a href="{{ route('site.index') }}" class="nav-link navegation">
+                        <i class="nav-icon fas fa-house-user"></i>
+                        <p>
+                            Voltar
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
