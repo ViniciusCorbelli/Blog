@@ -7,7 +7,7 @@
             <div class="card card-primary card-outline">
                 <div class="card-body box-profile">
                     <div class="text-center">
-                        <img class="profile-user-img img-fluid img-circle" src="{{ asset('img/' . $user->image) }}"
+                        <img class="profile-user-img img-fluid img-circle" src="{{ asset('/storage/img/user/' . $user->image) }}"
                             alt="Foto de perfil">
                     </div>
 

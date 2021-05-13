@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
-use App\Http\Requests\UserStoreRequest;
-use App\Http\Requests\UserUpdateRequest;
+use App\Http\Requests\UserRequest;
 use App\Post;
 use App\User;
 use Illuminate\Http\Request;
@@ -59,21 +58,20 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UserStoreRequest $request)
+    public function store(UserRequest $request)
     {
         $data = $request->all();
         $data = User::bcryptPassword($data);
-        if($request->hasfile('image')){
+        if ($request->hasfile('image')) {
             $extesion = $request->image->getClientOriginalExtension();
             $slug = str_slug($request->name);
             $nameFile = "{$slug}.{$extesion}";
-            $request->image->storeAs('public/img',$nameFile);
-            $data['image'] = 'img/'.$nameFile;
-
-            dd($data);
-        }else{
-            $data['image'] = "user.png";
+            $request->image->storeAs('public/img/user', $nameFile);
+            $data['image'] = $nameFile;
+        } else {
+            unset($data['image']);
         }
+        $data['verified'] = 0;
         User::create($data);
         return redirect()->route('admin.users.index')->with('success', true);
     }
@@ -96,17 +94,17 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UserUpdateRequest $request, User $user)
+    public function update(UserRequest $request, User $user)
     {
         $data = $request->all();
         $data = User::bcryptPassword($data);
-        if($request->hasfile('image')){
+        if ($request->hasfile('image')) {
             $extesion = $request->image->getClientOriginalExtension();
             $slug = str_slug($request->name);
             $nameFile = "{$slug}.{$extesion}";
-            $request->image->storeAs('public/img',$nameFile);
-            $data['image'] = 'img/'.$nameFile;
-        }else{
+            $request->image->storeAs('public/img/user', $nameFile);
+            $data['image'] = $nameFile;
+        } else {
             unset($data['image']);
         }
         $user->update($data);
@@ -125,8 +123,9 @@ class UserController extends Controller
         return redirect()->route('admin.users.index')->with('success', true);
     }
 
-    public function pendency(Request $request, User $user){
+    public function pendency(Request $request, User $user)
+    {
         $user->update($request->all());
-        return redirect()->route('admin.users.index')->with('success',true);
+        return redirect()->route('admin.users.index')->with('success', true);
     }
 }

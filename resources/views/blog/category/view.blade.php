@@ -23,7 +23,7 @@
                         <div class="row">
                             <div class="col-2">
                                 <a href="{{ route('blog.view', $post->id) }}">
-                                    <img src="{{ asset('img/posts/' . $post->image) }}" class="elevation-2">
+                                    <img src="{{ asset('/storage/img/posts/' . $post->image) }}" class="elevation-2">
                                 </a>
                             </div>
                             <div class="col-6">

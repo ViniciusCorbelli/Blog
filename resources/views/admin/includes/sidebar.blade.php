@@ -9,7 +9,7 @@
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
                 <a href="{{ route('admin.users.show', Auth::user()->id) }}">
-                    <img src="{{ asset('img/' . Auth::user()->image) }}"
+                    <img src="{{ asset('/storage/img/user/' . Auth::user()->image) }}"
                         class="img-circle elevation-2 perfil-sidebar">
                 </a>
             </div>

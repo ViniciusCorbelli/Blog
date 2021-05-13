@@ -83,7 +83,7 @@
             </div>
             <div class="col-sm">
                 <div class="laptop">
-                    <img src="{{ asset('img/laptop.png') }}" alt="Laptop">
+                    <img src="{{ asset('/storage/img/laptop.png') }}" alt="Laptop">
                 </div>
             </div>
         </div>

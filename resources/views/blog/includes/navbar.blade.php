@@ -1,5 +1,5 @@
 <div class="logo">
-    <img src="{{ asset('/img/logo.png') }}" alt="Logo">
+    <img src="{{ asset('/storage/img/logo.png') }}" alt="Logo">
 </div>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-site">

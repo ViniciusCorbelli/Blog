@@ -23,7 +23,7 @@
                             @if ($post->user->access == 'Administrador') <strong>
                             @endif {{ $post->user->name }} </strong>
                         </h1>
-                        <img src={{ asset('img/' . $post->user->image) }} alt="Foto de perfil">
+                        <img src={{ asset('/storage/img/user/' . $post->user->image) }} alt="Foto de perfil">
                         <h6><strong> Membro desde </strong>  {{ date('d/m/Y', strtotime($post->user->created_at)) }}</h6>
                         <h6><strong> Tipo de usúario </strong> {{ $post->user->access }}</h6>
                         <h6><strong> Postado em </strong> {{ $post->date }}</h6>
@@ -31,7 +31,7 @@
                 </div>
                 <div class="col-8">
                     <div class="postagem post-show">
-                        <img src="{{ asset('img/posts/' . $post->image) }}" class="elevation-2">
+                        <img src="{{ asset('/storage/img/posts/' . $post->image) }}" class="elevation-2">
                         <p> {!! $post->message !!} </p>
                         @if (Auth::user() != null && ($post->user_id == Auth::user()->id || Auth::user()->access == 'Administrador'))
                             <td>
@@ -51,7 +51,7 @@
                             @if ($comment->user->access == 'Administrador') <strong>
                             @endif {{ $comment->user->name }} </strong>
                         </h1>
-                        <img src={{ asset('img/' . $comment->user->image) }} alt="Foto de perfil">
+                        <img src={{ asset('/storage/img/user/' . $comment->user->image) }} alt="Foto de perfil">
                         <h6><strong> Membro desde </strong> {{ date('d/m/Y', strtotime($comment->user->created_at)) }}</h6>
                         <h6><strong> Tipo de usúario </strong> {{ $comment->user->access }}</h6>
                         <h6><strong> Postado em </strong> {{ $comment->date }}</h6>
@@ -90,7 +90,7 @@
         @if (Auth::user() != null)
             <div class="row post-show">
                 <div class="col-2 postagem post-show post-profile post-comment">
-                    <img src={{ asset('img/' . $post->user->image) }} alt="Foto de perfil">
+                    <img src={{ asset('/storage/img/user/' . $post->user->image) }} alt="Foto de perfil">
                 </div>
                 <div class="col-9 postagem post-show">
                     <h4>Responder tópico</h4>

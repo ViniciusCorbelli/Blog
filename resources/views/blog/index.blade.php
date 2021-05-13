@@ -17,7 +17,7 @@
             <div class="row">
                 <div class="col-lg destaque">
                     <a href="#">
-                        <img src="{{ asset('img/posts/' . $posts[$dest1]->image) }}" alt="Post em destaque">
+                        <img src="{{ asset('/storage/img/posts/' . $posts[$dest1]->image) }}" alt="Post em destaque">
                         <div class="destaque-text">
                             <h1>{{ $posts[$dest1]->title }}</h1>
                         </div>
@@ -27,7 +27,7 @@
                     <div class="row">
                         <div class="col-sm destaque">
                             <a href="#">
-                                <img src="{{ asset('img/posts/' . $posts[$dest2]->image) }}" alt="Post em destaque">
+                                <img src="{{ asset('/storage/img/posts/' . $posts[$dest2]->image) }}" alt="Post em destaque">
                                 <div class="destaque-text">
                                     <h1>{{ $posts[$dest2]->title }}</h1>
                                 </div>
@@ -35,7 +35,7 @@
                         </div>
                         <div class="col-sm destaque">
                             <a href="#">
-                                <img src="{{ asset('img/posts/' . $posts[$dest3]->image) }}" alt="Post em destaque">
+                                <img src="{{ asset('/storage/img/posts/' . $posts[$dest3]->image) }}" alt="Post em destaque">
                                 <div class="destaque-text">
                                     <h1>{{ $posts[$dest3]->title }}</h1>
                                 </div>
@@ -46,7 +46,7 @@
                     <div class="row">
                         <div class="col-sm destaque">
                             <a href="#">
-                                <img src="{{ asset('img/posts/' . $posts[$dest4]->image) }}" alt="Post em destaque">
+                                <img src="{{ asset('/storage/img/posts/' . $posts[$dest4]->image) }}" alt="Post em destaque">
                                 <div class="destaque-text">
                                     <h1>{{ $posts[$dest4]->title }}</h1>
                                 </div>
@@ -54,7 +54,7 @@
                         </div>
                         <div class="col-sm destaque">
                             <a href="#">
-                                <img src="{{ asset('img/posts/' . $posts[$dest5]->image) }}" alt="Post em destaque">
+                                <img src="{{ asset('/storage/img/posts/' . $posts[$dest5]->image) }}" alt="Post em destaque">
                                 <div class="destaque-text">
                                     <h1>{{ $posts[$dest5]->title }}</h1>
                                 </div>
@@ -69,7 +69,7 @@
                 @if ($countPost > -1)
                     @foreach ($posts as $post)
                         <div class="postagem post-author">
-                            <img src="{{ asset('img/' . $post->user->image) }}" alt="Foto de perfil">
+                            <img src="{{ asset('app/public/img/user/' . $post->user->image) }}" alt="Foto de perfil">
                             <h5>Postado por {{ $post->user->name }} </h5>
                             <h6>{{ $post->date }}</h6>
                         </div>
@@ -79,7 +79,7 @@
                             <h3> {{ $post->subtitle }} </h3>
                         </div>
                         <div class="postagem post-main">
-                            <img src="{{ asset('img/posts/' . $post->image) }}" class="elevation-2">
+                            <img src="{{ asset('/storage/img/posts/' . $post->image) }}" class="elevation-2">
                             <p> {!! $post->abstract !!} </p>
                             <div class="post-continuar">
                                 <a href="{{ route('blog.view', $post->id) }}"><button type="button"

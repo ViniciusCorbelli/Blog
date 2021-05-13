@@ -44,10 +44,10 @@ class PostController extends Controller
         $data['date'] = date('d/m/Y H:i');
         if ($request->hasfile('image')) {
             $extesion = $request->image->getClientOriginalExtension();
-            $slug = str_slug($request->title . $request->id);
+            $slug = str_slug($request->title);
             $nameFile = "{$slug}.{$extesion}";
             $request->image->storeAs('public/img/posts', $nameFile);
-            $data['image'] = 'img/' . $nameFile;
+            $data['image'] = $nameFile;
         } else {
             unset($data['image']);
         }
@@ -79,10 +79,10 @@ class PostController extends Controller
         $data = $request->all();
         if ($request->hasfile('image')) {
             $extesion = $request->image->getClientOriginalExtension();
-            $slug = str_slug($request->title . $request->id);
+            $slug = str_slug($request->title);
             $nameFile = "{$slug}.{$extesion}";
             $request->image->storeAs('public/img/posts', $nameFile);
-            $data['image'] = 'img/' . $nameFile;
+            $data['image'] = $nameFile;
         } else {
             unset($data['image']);
         }
