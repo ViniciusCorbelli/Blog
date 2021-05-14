@@ -8,7 +8,7 @@
     <div class="container">
         <div class="row">
             @if ($countPost > 0)
-                <div class="col-lg destaque destaque-1">
+                <div class="col-sm-4 destaque pl-1 pr-1">
                     <a href="{{ route('blog.view', $topPost[0]->id) }}">
                         <img src="{{ asset('/storage/img/posts/' . $topPost[0]->image) }}" alt="Post em destaque">
                         <div class="destaque-text">
@@ -18,11 +18,11 @@
                 </div>
             @endif
 
-            <div class="col-sm">
+            <div class="col-sm-8">
                 <div class="row">
                     @for ($i = 1; $i < 5; $i++)
                         @if ($countPost > $i)
-                            <div class="col-sm-6 destaque destaque-4">
+                            <div class="col-sm-6 destaque pl-1 pr-1">
                                 <a href={{ route('blog.view', $topPost[$i]->id) }}>
                                     <img src="{{ asset('/storage/img/posts/' . $topPost[$i]->image) }}"
                                         alt="Post em destaque">
@@ -38,7 +38,7 @@
         </div>
 
         <div class="row">
-            <div class="col-sm-8">
+            <div class="col-sm-8 pl-1 pr-1">
                 @if ($countPost > 0)
                     @foreach ($posts as $post)
                         <div class="postagem post-author">
@@ -64,7 +64,7 @@
                 @endif
                 {{ $posts->links() }}
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-4 pl-1 pr-1">
                 <div class="postagem">
                     <a class="twitter-timeline" data-height="600" data-theme="light"
                         href="https://twitter.com/Code_junior">Tweets por Code Empresa Júnior</a>

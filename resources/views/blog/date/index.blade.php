@@ -27,14 +27,14 @@
                         @endphp
                         <hr>
                         <div class="row">
-                            <div class="col-10">
+                            <div class="col-8">
                                 <h6> <Strong>
                                         @if ($id != null) <a
                                                 href="{{ route('blog.date.view', $id->id) }}"> @endif
                                         {{ $months[$i] }}</a>
                                     </Strong> </h6>
                             </div>
-                            <div class="col-2 text-center">
+                            <div class="col-4 text-right">
                                 <p> {{ $countPost[$i] }} postagens</p>
                             </div>
                         </div>

@@ -22,13 +22,14 @@
                             $countPost = count(App\Post::where('category_id', '=', $category->id)->get());
                         @endphp
                         <div class="row">
-                            <div class="col-10">
+                            <div class="col-8">
                                 <h6> <Strong> <a href="{{ route('blog.category.view', $category->id) }}">
                                             {{ $category->name }} </a> </Strong> </h6>
-                                <p> Último post: {{ $lastPost == null ? 'Não há post nessa categoria' : $lastPost->title }}
+                                <p> Último post:
+                                    {{ $lastPost == null ? 'Não há post nessa categoria' : $lastPost->title }}
                                 </p>
                             </div>
-                            <div class="col-2 text-center">
+                            <div class="col-4 text-right">
                                 <p> {{ $countPost }} postagens</p>
                             </div>
                         </div>
