@@ -86,6 +86,31 @@
     margin-left: 15px;
 }
 
+.dropbtn {
+    padding: 16px;
+    font-size: 16px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    min-width: 160px;
+    z-index: 1;
+}
+
+.dropdown-content a {
+    padding: 12px 16px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
 
 /* Postagens */
 
@@ -416,7 +441,7 @@
 
 .title h1 {
     padding-top: 60px;
-    color: #ffce07;
+    color: #251233;
     font-size: 48px;
     margin-bottom: 30px;
     text-align: center;
@@ -428,7 +453,7 @@
 }
 
 .form-register label {
-    color: #e9ecef;
+    color: #251233;
 }
 
 .form-center {

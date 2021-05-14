@@ -17,7 +17,7 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::all();
-        return view('perfil.posts.index', compact('posts'));
+        return view('profile.posts.index', compact('posts'));
     }
 
     /**
@@ -29,7 +29,7 @@ class PostController extends Controller
     {
         $post = new Post();
         $categories = Category::all();
-        return view('perfil.posts.create', compact('post', 'categories'));
+        return view('profile.posts.create', compact('post', 'categories'));
     }
     /**
      * Store a newly created resource in storage.
@@ -41,7 +41,6 @@ class PostController extends Controller
     {
         $data = $request->all();
         $data['user_id'] = Auth::user()->id;
-        $data['date'] = date('d/m/Y H:i');
         if ($request->hasfile('image')) {
             $extesion = $request->image->getClientOriginalExtension();
             $slug = str_slug($request->title);
@@ -52,7 +51,7 @@ class PostController extends Controller
             unset($data['image']);
         }
         post::create($data);
-        return redirect()->route('perfil.posts.index')->with('success', true);
+        return redirect()->route('profile.posts.index')->with('success', true);
     }
 
     /**
@@ -64,7 +63,7 @@ class PostController extends Controller
     public function edit(post $post)
     {
         $categories = Category::all();
-        return view('perfil.posts.edit', compact('post', 'categories'));
+        return view('profile.posts.edit', compact('post', 'categories'));
     }
 
     /**
@@ -87,7 +86,7 @@ class PostController extends Controller
             unset($data['image']);
         }
         $post->update($data);
-        return redirect()->route('perfil.posts.index')->with('success', true);
+        return redirect()->route('profile.posts.index')->with('success', true);
     }
 
     /**
@@ -99,6 +98,6 @@ class PostController extends Controller
     public function destroy(post $post)
     {
         $post->delete();
-        return redirect()->route('perfil.posts.index')->with('success', true);
+        return redirect()->route('profile.posts.index')->with('success', true);
     }
 }

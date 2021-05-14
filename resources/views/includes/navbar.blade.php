@@ -19,18 +19,18 @@
             <li class="nav-item {{ Route::is('site.index') ? 'navbar-active' : '' }}">
                 <a class="nav-link navegation" href="{{ route('site.index') }}">Início</a>
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    Blog
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{ route('blog.index') }}">Todos os posts</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{{ route('blog.category') }}">Categorias</a>
-                    <a class="dropdown-item" href="{{ route('blog.date') }}">Datas</a>
+
+
+            <div class="dropdown">
+                <li class="nav-item {{ Route::is('blog*') ? 'navbar-active' : '' }}">
+                    <a class="nav-link navegation" href="{{ route('blog.index') }}">Blog</a>
+                </li>
+                <div class="dropdown-content">
+                    <a class="dropdown-item" href="{{ route('blog.category') }}"><i class="fas fa-chevron-right"></i> Categorias</a>
+                    <a class="dropdown-item" href="{{ route('blog.date') }}"><i class="fas fa-chevron-right"></i> Datas</a>
                 </div>
-            </li>
+            </div>
+
             <li class="nav-item {{ Route::is('site.contact') ? 'navbar-active' : '' }}">
                 <a class="nav-link navegation" href="{{ route('site.contact') }}">Contato</a>
             </li>
@@ -54,13 +54,13 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     @if (Auth::user() == null)
-                        <a class="dropdown-item" href="{{ route('login') }}">Entrar</a>
-                        <a class="dropdown-item" href="{{ route('register') }}">Registrar</a>
+                        <a class="dropdown-item" href="{{ route('login') }}"><i class="fas fa-chevron-right"></i> Entrar</a>
+                        <a class="dropdown-item" href="{{ route('register') }}"><i class="fas fa-chevron-right"></i> Registrar</a>
                     @else
                         <div class="dropdown-user">
                             <div class="row">
                                 <div class="col-6">
-                                    <a href="{{ route('perfil.users.show', Auth::user()->id) }}">
+                                    <a href="{{ route('profile.users.show', Auth::user()->id) }}">
                                         <img class="img-fluid img-circle"
                                             src="{{ asset('/storage/img/user/' . Auth::user()->image) }}"
                                             alt="Foto de perfil">
@@ -68,11 +68,11 @@
                                 </div>
                                 <div class="col=6">
                                     <div class="text-center">
-                                        <a href="{{ route('perfil.users.show', Auth::user()->id) }}">
+                                        <a href="{{ route('profile.users.show', Auth::user()->id) }}">
                                             <h1>{{ Auth::user()->name }}</h1>
                                         </a>
                                         <h2>{{ Auth::user()->access }}</h2>
-                                        <a href="{{ route('perfil.users.show', Auth::user()->id) }}">Página de
+                                        <a href="{{ route('profile.users.show', Auth::user()->id) }}">Página de
                                             perfil</a>
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -87,15 +87,15 @@
                                 <div class="row">
                                     <div class="col-6 dropdown-select">
                                         @if (Auth::user()->access == 'Administrador')
-                                            <a class="dropdown-item" href="{{ route('perfil.home') }}">Dashboard</a>
+                                            <a class="dropdown-item" href="{{ route('profile.home') }}"><i class="fas fa-chevron-right"></i> Dashboard</a>
                                             <a class="dropdown-item"
-                                                href="{{ route('perfil.users.index') }}">Usuários</a>
+                                                href="{{ route('profile.users.index') }}"><i class="fas fa-chevron-right"></i> Usuários</a>
                                             <a class="dropdown-item"
-                                                href="{{ route('perfil.categories.index') }}">Categorias</a>
+                                                href="{{ route('profile.categories.index') }}"><i class="fas fa-chevron-right"></i> Categorias</a>
                                         @endif
                                         @if (Auth::user()->access == 'Administrador' || Auth::user()->access == 'Autor')
                                             <a class="dropdown-item"
-                                                href="{{ route('perfil.posts.index') }}">Publicações</a>
+                                                href="{{ route('profile.posts.index') }}"><i class="fas fa-chevron-right"></i> Publicações</a>
                                         @endif
                                     </div>
                                 </div>

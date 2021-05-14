@@ -15,9 +15,17 @@
 
 <body class="body-site">
     <div class="container">
+        <div class="verticals ten offset-by-one">
+            <ol class="breadcrumb breadcrumb-fill2">
+                <li><a href="{{ route('site.index') }}"><i class="fa fa-home"></i></a></li>
+                <li><a href="{{ route('blog.index') }}">Blog</a></li>
+                <li><a href="{{ route('profile.users.show', Auth::user()->id) }}">Perfil</a>
+                <li class="active-breadcrumb"> {{ Auth::user()->name }}</li>
+            </ol>
+        </div>
         @yield('content')
     </div>
-    @include('perfil.includes.success')
+    @include('profile.includes.success')
     @include('includes.footer')
 
     <script src="{{ asset('js/app.js') }}"></script>

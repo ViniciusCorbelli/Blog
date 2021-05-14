@@ -21,7 +21,6 @@ class CreatePostsTable extends Migration
             $table->longText('message');
             $table->longText('abstract');
             $table->string('image')->default('post.png');
-            $table->string('date');
             $table->integer('views')->default('0');
 
             $table->unsignedBigInteger('user_id');

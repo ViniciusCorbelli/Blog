@@ -7,6 +7,7 @@ use App\Http\Requests\UserRequest;
 use App\Post;
 use App\User;
 use Illuminate\Http\Request;
+use App\CustomClasses\ColectionPaginate;
 
 class UserController extends Controller
 {
@@ -24,7 +25,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('perfil.users.index', compact('users'));
+        return view('profile.users.index', compact('users'));
     }
 
     /**
@@ -35,21 +36,20 @@ class UserController extends Controller
     public function create()
     {
         $user = new User();
-        return view('perfil.users.create', compact('user'));
+        return view('profile.users.create', compact('user'));
     }
 
     public function show(User $user)
     {
         $posts = Post::where('user_id', '=', $user->id)->get();
         $comments = Comment::where('user_id', '=', $user->id)->get();
+        $postsAndComments = $posts;
+        foreach ($comments as $comment)
+            $postsAndComments->push($comment);
 
-        $activities = $posts;
-        foreach ($comments as $comment) {
-            $activities->push($comment);
-        }
-
-        $activities = $activities->sortByDesc('date');
-        return view('perfil.users.show', compact('user', 'activities'));
+        $postsAndComments = $postsAndComments->sortByDesc('created_at');
+        $activities = ColectionPaginate::paginate($postsAndComments, 10);
+        return view('profile.users.show', compact('user', 'activities'));
     }
 
     /**
@@ -73,7 +73,7 @@ class UserController extends Controller
         }
         $data['verified'] = 0;
         User::create($data);
-        return redirect()->route('perfil.users.index')->with('success', true);
+        return redirect()->route('profile.users.index')->with('success', true);
     }
 
     /**
@@ -84,7 +84,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('perfil.users.edit', compact('user'));
+        return view('profile.users.edit', compact('user'));
     }
 
     /**
@@ -108,7 +108,7 @@ class UserController extends Controller
             unset($data['image']);
         }
         $user->update($data);
-        return redirect()->route('perfil.users.index')->with('success', true);
+        return redirect()->route('profile.users.index')->with('success', true);
     }
 
     /**
@@ -120,12 +120,12 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
-        return redirect()->route('perfil.users.index')->with('success', true);
+        return redirect()->route('profile.users.index')->with('success', true);
     }
 
     public function pendency(Request $request, User $user)
     {
         $user->update($request->all());
-        return redirect()->route('perfil.users.index')->with('success', true);
+        return redirect()->route('profile.users.index')->with('success', true);
     }
 }

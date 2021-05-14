@@ -11,21 +11,20 @@ class CommentController extends Controller
     public function index()
     {
         $comments = Comment::all();
-        return view('perfil.comments.index', compact('comments'));
+        return view('profile.comments.index', compact('comments'));
     }
 
     public function store(PostRequest $request)
     {
         $data = $request->all();
         $data['user_id'] = Auth::user()->id;
-        $data['date'] = date('d/m/Y H:i');
         Comment::create($data);
         return redirect()->route('blog.view', $data['post_id'])->with('success', true);
     }
 
     public function edit(Comment $comment)
     {
-        return view('perfil.comments.edit', compact('comment'));
+        return view('profile.comments.edit', compact('comment'));
     }
 
     public function update(PostRequest $request, Comment $comment)
@@ -37,7 +36,7 @@ class CommentController extends Controller
     public function destroy(Comment $comment)
     {
         $comment->delete();
-        return redirect()->route('perfil.comments.index')->with('success', true);
+        return redirect()->route('profile.comments.index')->with('success', true);
     }
 
     public function destroyBlog(Comment $comment)

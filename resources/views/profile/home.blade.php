@@ -1,4 +1,4 @@
-@extends('perfil.layouts.app')
+@extends('profile.layouts.app')
 
 @section('content')
     @php
@@ -43,7 +43,7 @@
                                     <div class="icon">
                                         <i class="fas fa-users"></i>
                                     </div>
-                                    <a href="{{ route('perfil.users.index') }}" class="small-box-footer">
+                                    <a href="{{ route('profile.users.index') }}" class="small-box-footer">
                                         Mais informações <i class="fas fa-arrow-circle-right"></i>
                                     </a>
                                 </div>
@@ -58,7 +58,7 @@
                                     <div class="icon">
                                         <i class="fas fa-user-plus"></i>
                                     </div>
-                                    <a href="{{ route('perfil.users.index') }}" class="small-box-footer">
+                                    <a href="{{ route('profile.users.index') }}" class="small-box-footer">
                                         Mais informações <i class="fas fa-arrow-circle-right"></i>
                                     </a>
                                 </div>
@@ -73,7 +73,7 @@
                                     <div class="icon">
                                         <i class="fas fa-mail-bulk"></i>
                                     </div>
-                                    <a href="{{ route('perfil.posts.index') }}" class="small-box-footer">
+                                    <a href="{{ route('profile.posts.index') }}" class="small-box-footer">
                                         Mais informações <i class="fas fa-arrow-circle-right"></i>
                                     </a>
                                 </div>
@@ -88,7 +88,7 @@
                                     <div class="icon">
                                         <i class="far fa-envelope"></i>
                                     </div>
-                                    <a href="{{ route('perfil.posts.index') }}" class="small-box-footer">
+                                    <a href="{{ route('profile.posts.index') }}" class="small-box-footer">
                                         Mais informações <i class="fas fa-arrow-circle-right"></i>
                                     </a>
                                 </div>

@@ -1,4 +1,4 @@
-@extends('perfil.layouts.app')
+@extends('profile.layouts.app')
 
 @section('title', 'Informações do Usuário')
 @section('content')
@@ -19,11 +19,11 @@
                         </li>
                     </ul>
                     @can('update', $user)
-                        <a href="{{ route('perfil.users.edit', $user->id) }}" class="btn btn-primary btn-block mb-2"><i
+                        <a href="{{ route('profile.users.edit', $user->id) }}" class="btn btn-primary btn-block mb-2"><i
                                 class="fas fa-pen"></i> Editar</a>
                     @endcan
                     @can('delete', $user)
-                        <form class="form-delete" action="{{ route('perfil.users.destroy', $user->id) }}" method="post">
+                        <form class="form-delete" action="{{ route('profile.users.destroy', $user->id) }}" method="post">
                             @csrf
                             @method('delete')
                             <button type="submit" class="btn btn-danger btn-block"><i class="fas fa-trash"></i> Excluir</button>
@@ -41,11 +41,8 @@
                         <p class="text-muted"><strong> Tipo de usúario </strong> {{ $user->access }}</h6>
 
                     </div>
-                    <!-- /.card-body -->
                 </div>
-                <!-- /.card -->
             </div>
-            <!-- /.col -->
             <div class="col-md-9">
                 <div class="card">
                     <div class="card-body">
@@ -60,17 +57,17 @@
                                         @php $lastDate = 0 @endphp
                                         @foreach ($activities as $activity)
                                             @if ($activity->title != null)
-                                                @if (date('d/m/Y', strtotime($activity->date)) != $lastDate)
+                                                @if (date('d/m/Y', strtotime($activity->created_at)) != $lastDate)
                                                     <div class="time-label">
                                                         <span
-                                                            class="bg-green">{{ date('d/m/Y', strtotime($activity->date)) }}</span>
+                                                            class="bg-green">{{ date('d/m/Y', strtotime($activity->created_at)) }}</span>
                                                     </div>
                                                 @endif
                                                 <div>
                                                     <i class="fas fa-mail-bulk bg-dark"></i>
                                                     <div class="timeline-item">
                                                         <span class="time"><i class="fas fa-clock"></i>
-                                                            {{ date('H:i', strtotime($activity->date)) }}</span>
+                                                            {{ date('H:i', strtotime($activity->created_at)) }}</span>
                                                         <h3 class="timeline-header">Publicou: <a
                                                                 href="{{ route('blog.view', $activity->id) }}">{{ $activity->title }}</a>
                                                         </h3>
@@ -83,17 +80,17 @@
                                                     </div>
                                                 </div>
                                             @else
-                                                @if (date('d/m/Y', strtotime($activity->date)) != $lastDate)
+                                                @if (date('d/m/Y', strtotime($activity->created_at)) != $lastDate)
                                                     <div class="time-label">
                                                         <span
-                                                            class="bg-green">{{ date('d/m/Y', strtotime($activity->date)) }}</span>
+                                                            class="bg-green">{{ date('d/m/Y', strtotime($activity->created_at)) }}</span>
                                                     </div>
                                                 @endif
                                                 <div>
                                                     <i class="fas fa-pen bg-dark"></i>
                                                     <div class="timeline-item">
                                                         <span class="time"><i class="fas fa-clock"></i>
-                                                            {{ date('H:i', strtotime($activity->date)) }}</span>
+                                                            {{ date('H:i', strtotime($activity->created_at)) }}</span>
                                                         <h3 class="timeline-header">Comentou em: <a
                                                                 href="{{ route('blog.view', $activity->post->id) }}">{{ $activity->post->title }}</a>
                                                         </h3>
@@ -106,7 +103,7 @@
                                                     </div>
                                                 </div>
                                             @endif
-                                            @php $lastDate = date('d/m/Y', strtotime($activity->date)) @endphp
+                                            @php $lastDate = date('d/m/Y', strtotime($activity->created_at)) @endphp
                                         @endforeach
                                         <div>
                                             <i class="fas fa-clock bg-gray"></i>
@@ -117,6 +114,7 @@
                         </div>
                     </div>
                 </div>
+                {{ $activities->links() }}
             </div>
         </div>
 

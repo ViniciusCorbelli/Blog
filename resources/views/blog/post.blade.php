@@ -35,7 +35,7 @@
                         <p> {!! $post->message !!} </p>
                         @if (Auth::user() != null && ($post->user_id == Auth::user()->id || Auth::user()->access == 'Administrador'))
                             <td>
-                                <a href="{{ route('perfil.posts.edit', $post->id) }}" class="btn btn-primary"><i
+                                <a href="{{ route('profile.posts.edit', $post->id) }}" class="btn btn-primary"><i
                                         class="fas fa-edit"></i></a>
                             </td>
                         @endif
@@ -64,12 +64,12 @@
                             <table>
                                 <tr>
                                     <td>
-                                        <a href="{{ route('perfil.comments.edit', $comment->id) }}"
+                                        <a href="{{ route('profile.comments.edit', $comment->id) }}"
                                             class="btn btn-primary"><i class="fas fa-edit"></i></a>
                                     </td>
                                     <td>
                                         <form class="form-delete"
-                                            action="{{ route('perfil.comments.destroyBlog', $comment->id) }}"
+                                            action="{{ route('profile.comments.destroyBlog', $comment->id) }}"
                                             method="post">
                                             @csrf
                                             @method('delete')
