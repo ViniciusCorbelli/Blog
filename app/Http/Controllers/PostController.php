@@ -17,7 +17,7 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::all();
-        return view('admin.posts.index', compact('posts'));
+        return view('perfil.posts.index', compact('posts'));
     }
 
     /**
@@ -29,7 +29,7 @@ class PostController extends Controller
     {
         $post = new Post();
         $categories = Category::all();
-        return view('admin.posts.create', compact('post', 'categories'));
+        return view('perfil.posts.create', compact('post', 'categories'));
     }
     /**
      * Store a newly created resource in storage.
@@ -52,7 +52,7 @@ class PostController extends Controller
             unset($data['image']);
         }
         post::create($data);
-        return redirect()->route('admin.posts.index')->with('success', true);
+        return redirect()->route('perfil.posts.index')->with('success', true);
     }
 
     /**
@@ -64,7 +64,7 @@ class PostController extends Controller
     public function edit(post $post)
     {
         $categories = Category::all();
-        return view('admin.posts.edit', compact('post', 'categories'));
+        return view('perfil.posts.edit', compact('post', 'categories'));
     }
 
     /**
@@ -87,7 +87,7 @@ class PostController extends Controller
             unset($data['image']);
         }
         $post->update($data);
-        return redirect()->route('admin.posts.index')->with('success', true);
+        return redirect()->route('perfil.posts.index')->with('success', true);
     }
 
     /**
@@ -99,6 +99,6 @@ class PostController extends Controller
     public function destroy(post $post)
     {
         $post->delete();
-        return redirect()->route('admin.posts.index')->with('success', true);
+        return redirect()->route('perfil.posts.index')->with('success', true);
     }
 }

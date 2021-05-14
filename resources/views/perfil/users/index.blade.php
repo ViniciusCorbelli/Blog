@@ -1,8 +1,8 @@
-@extends('admin.layouts.app')
+@extends('perfil.layouts.app')
 
 @section('content')
-    @component('admin.components.table')
-        @slot('create', route('admin.users.create'))
+    @component('perfil.components.table')
+        @slot('create', route('perfil.users.create'))
             @slot('titulo', 'Usuários')
                 @slot('head')
                     <th>Nome</th>
@@ -19,7 +19,7 @@
                                 <td class="options">
                                     @can('delete', $user)
                                         @if ($user->verified == 0)
-                                            <form class="form-save" action="{{ route('admin.users.pendency', $user->id) }}" method="post">
+                                            <form class="form-save" action="{{ route('perfil.users.pendency', $user->id) }}" method="post">
                                                 @csrf
                                                 @method('put')
                                                 <input type="hidden" value='1' name='verified'>
@@ -30,11 +30,11 @@
                                         @endif
                                     @endcan
                                     @can('update', $user)
-                                        <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-primary"><i
+                                        <a href="{{ route('perfil.users.edit', $user->id) }}" class="btn btn-primary"><i
                                                 class="fas fa-edit"></i></a>
                                     @endcan
                                     @can('delete', $user)
-                                        <form method="post" action="{{ route('admin.users.destroy', $user->id) }}" class="form-delete">
+                                        <form method="post" action="{{ route('perfil.users.destroy', $user->id) }}" class="form-delete">
                                             @csrf
                                             @method('delete')
                                             <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>

@@ -15,7 +15,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::all();
-        return view('admin.categories.index', compact('categories'));
+        return view('perfil.categories.index', compact('categories'));
     }
 
     /**
@@ -26,7 +26,7 @@ class CategoryController extends Controller
     public function create()
     {
         $category = new Category();
-        return view('admin.categories.create', compact('category'));
+        return view('perfil.categories.create', compact('category'));
     }
 
     /**
@@ -38,7 +38,7 @@ class CategoryController extends Controller
     public function store(CategoryRequest $request)
     {
         $category = Category::create($request->all());
-        return redirect()->route('admin.categories.index')->with('success', true);
+        return redirect()->route('perfil.categories.index')->with('success', true);
     }
 
     /**
@@ -49,7 +49,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('admin.categories.edit', compact('category'));
+        return view('perfil.categories.edit', compact('category'));
     }
 
     /**
@@ -62,7 +62,7 @@ class CategoryController extends Controller
     public function update(CategoryRequest $request, Category $category)
     {
         $category->update($request->all());
-        return redirect()->route('admin.categories.index')->with('success', true);
+        return redirect()->route('perfil.categories.index')->with('success', true);
     }
 
     /**
@@ -74,6 +74,6 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
-        return redirect()->route('admin.categories.index')->with('success', true);
+        return redirect()->route('perfil.categories.index')->with('success', true);
     }
 }

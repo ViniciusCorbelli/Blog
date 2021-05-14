@@ -1,4 +1,4 @@
-@extends('blog.layouts.app')
+@extends('layouts.app')
 
 @section('content')
     <div class="container">
@@ -16,9 +16,9 @@
         <p>Tópico em '{{ $post->category->name }}' criado por {{ $post->user->name }}, {{ $post->date }}.</p>
         {{ $comments->links() }}
         @if ($comments->currentPage() == 1)
-            <div class="row post-show">
+            <div class="row card-post-show">
                 <div class="col-3">
-                    <div class="postagem post-show post-profile">
+                    <div class="card-post card-post-show card-post-profile">
                         <h1>
                             @if ($post->user->access == 'Administrador') <strong>
                             @endif {{ $post->user->name }} </strong>
@@ -30,12 +30,12 @@
                     </div>
                 </div>
                 <div class="col-8">
-                    <div class="postagem post-show">
+                    <div class="card-post card-post-show">
                         <img src="{{ asset('/storage/img/posts/' . $post->image) }}" class="elevation-2">
                         <p> {!! $post->message !!} </p>
                         @if (Auth::user() != null && ($post->user_id == Auth::user()->id || Auth::user()->access == 'Administrador'))
                             <td>
-                                <a href="{{ route('admin.posts.edit', $post->id) }}" class="btn btn-primary"><i
+                                <a href="{{ route('perfil.posts.edit', $post->id) }}" class="btn btn-primary"><i
                                         class="fas fa-edit"></i></a>
                             </td>
                         @endif
@@ -44,9 +44,9 @@
             </div>
         @endif
         @foreach ($comments as $comment)
-            <div class="row post-show">
+            <div class="row card-post-show">
                 <div class="col-3">
-                    <div class="postagem post-show post-profile">
+                    <div class="card-post card-post-show card-post-profile">
                         <h1>
                             @if ($comment->user->access == 'Administrador') <strong>
                             @endif {{ $comment->user->name }} </strong>
@@ -58,18 +58,18 @@
                     </div>
                 </div>
                 <div class="col-7">
-                    <div class="postagem post-show">
+                    <div class="card-post card-post-show">
                         <p> {{ $comment->message }} </p>
                         @if (Auth::user() != null && ($comment->user_id == Auth::user()->id || Auth::user()->access == 'Administrador'))
                             <table>
                                 <tr>
                                     <td>
-                                        <a href="{{ route('admin.comments.edit', $comment->id) }}"
+                                        <a href="{{ route('perfil.comments.edit', $comment->id) }}"
                                             class="btn btn-primary"><i class="fas fa-edit"></i></a>
                                     </td>
                                     <td>
                                         <form class="form-delete"
-                                            action="{{ route('admin.comments.destroyBlog', $comment->id) }}"
+                                            action="{{ route('perfil.comments.destroyBlog', $comment->id) }}"
                                             method="post">
                                             @csrf
                                             @method('delete')
@@ -88,18 +88,18 @@
         {{ $comments->links() }}
 
         @if (Auth::user() != null)
-            <div class="row post-show">
-                <div class="col-2 postagem post-show post-profile post-comment">
+            <div class="row card-post-show">
+                <div class="col-2 card-post card-post-show card-post-profile card-comment">
                     <img src={{ asset('/storage/img/user/' . $post->user->image) }} alt="Foto de perfil">
                 </div>
-                <div class="col-9 postagem post-show">
+                <div class="col-9 card-post card-post-show">
                     <h4>Responder tópico</h4>
                     <form action="{{ route('blog.comment.store', $post->id) }}" method="post">
                         @csrf
                         @method('put')
                         <input type="hidden" name="post_id" id="post_id" value="{{ $post->id }}">
                         <textarea class="form-control" name="message" id="message" required rows="3"></textarea>
-                        <button type="submit" class="btn btn-primary button-responder"> Responder</button>
+                        <button type="submit" class="btn btn-primary card-button-answer"> Responder</button>
                     </form>
                 </div>
             </div>

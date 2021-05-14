@@ -1,4 +1,4 @@
-@extends('blog.layouts.app')
+@extends('layouts.app')
 
 @section('content')
     <div class="container">
@@ -11,7 +11,7 @@
         </div>
         <div class="row">
             <div class="col-sm-8">
-                <div class="postagem categories">
+                <div class="card-post categories">
                     <h1>Datas</h1>
                     @php
                         $months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
@@ -43,7 +43,7 @@
                 </div>
             </div>
             <div class="col-sm-4">
-                <div class="postagem">
+                <div class="card-post">
                     <a class="twitter-timeline" data-height="600" data-theme="light"
                         href="https://twitter.com/Code_junior">Tweets por Code Empresa Júnior</a>
                     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>

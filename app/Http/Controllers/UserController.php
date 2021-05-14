@@ -24,7 +24,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('admin.users.index', compact('users'));
+        return view('perfil.users.index', compact('users'));
     }
 
     /**
@@ -35,7 +35,7 @@ class UserController extends Controller
     public function create()
     {
         $user = new User();
-        return view('admin.users.create', compact('user'));
+        return view('perfil.users.create', compact('user'));
     }
 
     public function show(User $user)
@@ -49,7 +49,7 @@ class UserController extends Controller
         }
 
         $activities = $activities->sortByDesc('date');
-        return view('admin.users.show', compact('user', 'activities'));
+        return view('perfil.users.show', compact('user', 'activities'));
     }
 
     /**
@@ -73,7 +73,7 @@ class UserController extends Controller
         }
         $data['verified'] = 0;
         User::create($data);
-        return redirect()->route('admin.users.index')->with('success', true);
+        return redirect()->route('perfil.users.index')->with('success', true);
     }
 
     /**
@@ -84,7 +84,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('admin.users.edit', compact('user'));
+        return view('perfil.users.edit', compact('user'));
     }
 
     /**
@@ -108,7 +108,7 @@ class UserController extends Controller
             unset($data['image']);
         }
         $user->update($data);
-        return redirect()->route('admin.users.index')->with('success', true);
+        return redirect()->route('perfil.users.index')->with('success', true);
     }
 
     /**
@@ -120,12 +120,12 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
-        return redirect()->route('admin.users.index')->with('success', true);
+        return redirect()->route('perfil.users.index')->with('success', true);
     }
 
     public function pendency(Request $request, User $user)
     {
         $user->update($request->all());
-        return redirect()->route('admin.users.index')->with('success', true);
+        return redirect()->route('perfil.users.index')->with('success', true);
     }
 }

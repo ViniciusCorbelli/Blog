@@ -26,6 +26,6 @@ class HomeController extends Controller
     {
         $users = User::all();
         $posts = Post::all();
-        return view('admin.home', compact('users', 'posts'));
+        return view('perfil.home', compact('users', 'posts'));
     }
 }

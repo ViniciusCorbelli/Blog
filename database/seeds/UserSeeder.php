@@ -15,12 +15,12 @@ class UserSeeder extends Seeder
         factory(User::class, 5)->create();
         User::updateOrCreate([
             'name' => 'Admin',
-            'email' => 'admin@admin.com.br',
+            'email' => 'admin@perfil.com.br',
             'access' => 'Administrador',
             'verified' => 1,
         ],[
             'name' => 'Admin',
-            'email' => 'admin@admin.com.br',
+            'email' => 'admin@perfil.com.br',
             'email_verified_at' => now(),
             'access' => 'Administrador',
             'password' => bcrypt('123456'),

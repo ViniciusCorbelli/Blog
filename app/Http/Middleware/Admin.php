@@ -19,6 +19,6 @@ class Admin
         if (Auth::user()->access == "Administrador") {
             return $next($request);
         }
-        return redirect()->route('admin.users.show', Auth::user()->id)->withMessage('Você não possui acesso à está página!');
+        return redirect()->route('perfil.users.show', Auth::user()->id)->withMessage('Você não possui acesso à está página!');
     }
 }

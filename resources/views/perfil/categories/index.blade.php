@@ -1,8 +1,8 @@
-@extends('admin.layouts.app')
+@extends('perfil.layouts.app')
 
 @section('content')
-    @component('admin.components.table')
-        @slot('create', route('admin.categories.create'))
+    @component('perfil.components.table')
+        @slot('create', route('perfil.categories.create'))
             @slot('titulo', 'Categorias')
                 @slot('head')
                     <th>Nome</th>
@@ -14,11 +14,11 @@
                             <td>{{ $category->name }}</td>
                             <td class="options">
                                 @can('update', $category)
-                                    <a href="{{ route('admin.categories.edit', $category->id) }}" class="btn btn-primary"><i
+                                    <a href="{{ route('perfil.categories.edit', $category->id) }}" class="btn btn-primary"><i
                                             class="fas fa-edit"></i></a>
                                 @endcan
                                 @can('delete', $category)
-                                    <form method="post" action="{{ route('admin.categories.destroy', $category->id) }}" class="form-delete">
+                                    <form method="post" action="{{ route('perfil.categories.destroy', $category->id) }}" class="form-delete">
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>

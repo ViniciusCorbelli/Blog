@@ -1,8 +1,8 @@
-@extends('admin.layouts.app')
+@extends('perfil.layouts.app')
 
 @section('content')
-    @component('admin.components.table')
-        @slot('create', route('admin.posts.create'))
+    @component('perfil.components.table')
+        @slot('create', route('perfil.posts.create'))
             @slot('titulo', 'Mensagem')
                 @slot('head')
                     <th>Autor</th>
@@ -20,11 +20,11 @@
                                 <td class="options">
                                     <a href="{{ route('blog.view', $post->id) }}" class="btn btn-secondary"><i class="fas fa-eye"></i></i></a>
                                     @can('update', $post)
-                                        <a href="{{ route('admin.posts.edit', $post->id) }}" class="btn btn-primary"><i
+                                        <a href="{{ route('perfil.posts.edit', $post->id) }}" class="btn btn-primary"><i
                                                 class="fas fa-edit"></i></a>
                                     @endcan
                                     @can('delete', $post)
-                                        <form method="post" action="{{ route('admin.posts.destroy', $post->id) }}" class="form-delete">
+                                        <form method="post" action="{{ route('perfil.posts.destroy', $post->id) }}" class="form-delete">
                                             @csrf
                                             @method('delete')
                                             <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>

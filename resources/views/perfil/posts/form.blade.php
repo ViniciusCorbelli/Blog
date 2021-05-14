@@ -28,13 +28,13 @@
     </div>
 </div>
 <div class="form-group">
-    <label for="message" class="required">Postagem </label>
+    <label for="message" class="required">card-post </label>
     <textarea name="message" class="textarea" style="width: 730px; height: 200px; max-width: 100%"
         value="{{ old('message', $post->message) }}"> {{ $post->message }} </textarea>
 </div>
 
 <div class="form-group">
-    <label for="abstract" class="required">Resumo da postagem </label>
+    <label for="abstract" class="required">Resumo da card-post </label>
     <textarea name="abstract" class="textarea" style="width: 730px; height: 200px; max-width: 100%"
         value="{{ old('abstract', $post->abstract) }}"> {{ $post->abstract }} </textarea>
 </div>

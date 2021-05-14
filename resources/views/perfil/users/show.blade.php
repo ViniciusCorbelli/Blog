@@ -1,4 +1,4 @@
-@extends('admin.layouts.app')
+@extends('perfil.layouts.app')
 
 @section('title', 'Informações do Usuário')
 @section('content')
@@ -7,8 +7,8 @@
             <div class="card card-primary card-outline">
                 <div class="card-body box-profile">
                     <div class="text-center">
-                        <img class="profile-user-img img-fluid img-circle" src="{{ asset('/storage/img/user/' . $user->image) }}"
-                            alt="Foto de perfil">
+                        <img class="profile-user-img img-fluid img-circle"
+                            src="{{ asset('/storage/img/user/' . $user->image) }}" alt="Foto de perfil">
                     </div>
 
                     <h3 class="profile-username text-center">{{ $user->name }}</h3>
@@ -19,11 +19,11 @@
                         </li>
                     </ul>
                     @can('update', $user)
-                        <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-primary btn-block mb-2"><i
+                        <a href="{{ route('perfil.users.edit', $user->id) }}" class="btn btn-primary btn-block mb-2"><i
                                 class="fas fa-pen"></i> Editar</a>
                     @endcan
                     @can('delete', $user)
-                        <form class="form-delete" action="{{ route('admin.users.destroy', $user->id) }}" method="post">
+                        <form class="form-delete" action="{{ route('perfil.users.destroy', $user->id) }}" method="post">
                             @csrf
                             @method('delete')
                             <button type="submit" class="btn btn-danger btn-block"><i class="fas fa-trash"></i> Excluir</button>
@@ -36,7 +36,8 @@
                         <h3 class="card-title">Informações</h3>
                     </div>
                     <div class="card-body">
-                        <p class="text-muted"><strong> Membro desde </strong> {{ date('d/m/Y', strtotime($user->created_at)) }}</h6>
+                        <p class="text-muted"><strong> Membro desde </strong>
+                            {{ date('d/m/Y', strtotime($user->created_at)) }}</h6>
                         <p class="text-muted"><strong> Tipo de usúario </strong> {{ $user->access }}</h6>
 
                     </div>
@@ -59,7 +60,7 @@
                                         @php $lastDate = 0 @endphp
                                         @foreach ($activities as $activity)
                                             @if ($activity->title != null)
-                                                @if (date('d/m/Y', strtotime($activity->date)) !== $lastDate)
+                                                @if (date('d/m/Y', strtotime($activity->date)) != $lastDate)
                                                     <div class="time-label">
                                                         <span
                                                             class="bg-green">{{ date('d/m/Y', strtotime($activity->date)) }}</span>
@@ -93,7 +94,8 @@
                                                     <div class="timeline-item">
                                                         <span class="time"><i class="fas fa-clock"></i>
                                                             {{ date('H:i', strtotime($activity->date)) }}</span>
-                                                        <h3 class="timeline-header">Comentou em: <a href="{{ route('blog.view', $activity->post->id) }}">{{ $activity->post->title }}</a>
+                                                        <h3 class="timeline-header">Comentou em: <a
+                                                                href="{{ route('blog.view', $activity->post->id) }}">{{ $activity->post->title }}</a>
                                                         </h3>
                                                         <div class="timeline-body limite-rows"> {{ $activity->message }}
                                                         </div>
