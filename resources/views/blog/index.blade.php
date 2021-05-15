@@ -2,8 +2,8 @@
 
 @section('content')
     @php
-    $countPost = count($posts);
     $topPost = App\Post::orderBy('views', 'desc')->get();
+    $countPost = count($topPost);
     @endphp
     <div class="container">
         <div class="row">
