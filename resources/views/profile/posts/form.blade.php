@@ -1,9 +1,3 @@
-<link rel="stylesheet" type="text/css"
-    href="https://jhollingworth.github.io/bootstrap-wysihtml5//lib/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="https://jhollingworth.github.io/bootstrap-wysihtml5//lib/css/prettify.css">
-<link rel="stylesheet" type="text/css"
-    href="https://jhollingworth.github.io/bootstrap-wysihtml5//src/bootstrap-wysihtml5.css">
-
 <label for="title" class="required">Título </label>
 <input name="title" id="title" required value="{{ old('title', $post->title) }}" type="text" class="form-control">
 
@@ -28,38 +22,13 @@
     </div>
 </div>
 <div class="form-group">
-    <label for="message" class="required">card-post </label>
-    <textarea name="message" class="textarea" style="width: 730px; height: 200px; max-width: 100%"
+    <label for="message" class="required">Postagem </label>
+    <textarea name="message" class="form-control"
         value="{{ old('message', $post->message) }}"> {{ $post->message }} </textarea>
 </div>
 
 <div class="form-group">
-    <label for="abstract" class="required">Resumo da card-post </label>
-    <textarea name="abstract" class="textarea" style="width: 730px; height: 200px; max-width: 100%"
+    <label for="abstract" class="required">Resumo da postagem </label>
+    <textarea name="abstract" class="form-control"
         value="{{ old('abstract', $post->abstract) }}"> {{ $post->abstract }} </textarea>
 </div>
-
-@push('scripts')
-    <script src="https://jhollingworth.github.io/bootstrap-wysihtml5//lib/js/wysihtml5-0.3.0.js"></script>
-    <script src="https://jhollingworth.github.io/bootstrap-wysihtml5//lib/js/jquery-1.7.2.min.js"></script>
-    <script src="https://jhollingworth.github.io/bootstrap-wysihtml5//lib/js/prettify.js"></script>
-    <script src="https://jhollingworth.github.io/bootstrap-wysihtml5//lib/js/bootstrap.min.js"></script>
-    <script src="https://jhollingworth.github.io/bootstrap-wysihtml5//src/bootstrap-wysihtml5.js"></script>
-    <script>
-        $('textarea').wysihtml5({
-            "style": true,
-            "font-styles": false,
-            "emphasis": true,
-            "lists": true,
-            "html": false,
-            "link": true,
-            "image": true,
-            "color": true,
-            parser: function(html) {
-                return html;
-            }
-        });
-
-    </script>
-
-@endpush
