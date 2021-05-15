@@ -26,7 +26,7 @@
                         <img src={{ asset('/storage/img/user/' . $post->user->image) }} alt="Foto de perfil">
                         <h6><strong> Membro desde </strong>  {{ date('d/m/Y', strtotime($post->user->created_at)) }}</h6>
                         <h6><strong> Tipo de usúario </strong> {{ $post->user->access }}</h6>
-                        <h6><strong> Postado em </strong> {{ $post->date }}</h6>
+                        <h6><strong> Postado em </strong> {{ date('d/m/Y H:i', strtotime($post->created_at)) }}</h6>
                     </div>
                 </div>
                 <div class="col-8">
@@ -54,7 +54,7 @@
                         <img src={{ asset('/storage/img/user/' . $comment->user->image) }} alt="Foto de perfil">
                         <h6><strong> Membro desde </strong> {{ date('d/m/Y', strtotime($comment->user->created_at)) }}</h6>
                         <h6><strong> Tipo de usúario </strong> {{ $comment->user->access }}</h6>
-                        <h6><strong> Postado em </strong> {{ $comment->date }}</h6>
+                        <h6><strong> Postado em </strong> {{ date('d/m/Y H:i', strtotime($comment->created_at)) }}</h6>
                     </div>
                 </div>
                 <div class="col-8">
