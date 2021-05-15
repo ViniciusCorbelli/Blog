@@ -57,7 +57,7 @@
                         <h6><strong> Postado em </strong> {{ $comment->date }}</h6>
                     </div>
                 </div>
-                <div class="col-7">
+                <div class="col-8">
                     <div class="card-post card-post-show">
                         <p> {{ $comment->message }} </p>
                         @if (Auth::user() != null && ($comment->user_id == Auth::user()->id || Auth::user()->access == 'Administrador'))
