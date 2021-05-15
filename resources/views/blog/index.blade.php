@@ -44,7 +44,7 @@
                         <div class="card-post card-post-author">
                             <img src="{{ asset('storage/img/user/' . $post->user->image) }}" alt="Foto de perfil">
                             <h5>Postado por {{ $post->user->name }} </h5>
-                            <h6>{{ $post->date }}</h6>
+                            <h6>{{ date('d/m/Y H:i', strtotime($post->created_at)) }}</h6>
                         </div>
                         <div class="card-post card-post-title">
                             <h5> {{ $post->category->name }} </h5>

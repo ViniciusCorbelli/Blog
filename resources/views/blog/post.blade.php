@@ -13,7 +13,7 @@
             </ol>
         </div>
         <h1> {{ $post->title }} </h1>
-        <p>Tópico em '{{ $post->category->name }}' criado por {{ $post->user->name }}, {{ $post->date }}.</p>
+        <p>Tópico em '{{ $post->category->name }}' criado por {{ $post->user->name }}, {{ date('d/m/Y H:i', strtotime($post->created_at)) }}.</p>
         {{ $comments->links() }}
         @if ($comments->currentPage() == 1)
             <div class="row card-post-show">

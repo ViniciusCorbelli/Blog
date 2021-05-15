@@ -29,7 +29,7 @@
                             <div class="col-6">
                                 <a href="{{ route('blog.view', $post->id) }}">
                                     <h6> <Strong> {{ $post->title }} </Strong> </h6>
-                                    <p> Por {{ $post->user->name }}, {{ $post->date }}</p>
+                                    <p> Por {{ $post->user->name }}, {{ date('d/m/Y H:i', strtotime($post->created_at)) }}</p>
                                 </a>
                                 <div class="statistics-post">
                                     <p> <strong> <i class="fas fa-comments"></i> {{ $countComments }} respostas
@@ -43,10 +43,10 @@
                                 <h6>Última resposta</h6>
                                 @if ($lastComment->first() != null)
                                     <h6>{{ $lastComment->first()->user->name }},
-                                        {{ $lastComment->first()->date }}
+                                        {{ date('d/m/Y H:i', strtotime($lastComment->first()->created_at)) }} 
                                     </h6>
                                 @else
-                                    <h6>{{ $post->user->name }}, {{ $post->date }}</h6>
+                                    <h6>{{ $post->user->name }}, {{ date('d/m/Y H:i', strtotime($post->created_at)) }}</h6>
                                 @endif
                             </div>
                         </div>

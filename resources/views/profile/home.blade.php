@@ -15,7 +15,7 @@
     }
 
     foreach ($posts as $post) {
-        if (date('d', strtotime($post->date)) == date('m')) {
+        if (date('d', strtotime(date('d/m/Y H:i', strtotime($post->created_at)))) == date('m')) {
             $TotalPostsNews++;
         }
         $TotalPosts++;
