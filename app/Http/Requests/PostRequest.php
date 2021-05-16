@@ -24,6 +24,30 @@ class PostRequest extends FormRequest
     public function rules()
     {
         return [
+            'title' => 'required|string|min:3',
+            'subtitle' => 'required|string|min:3',
+            'message' => 'required|string|min:3',
+            'abstract' => 'required|string|min:3',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'title.required' => 'O título deve conter pelo menos 3 letras!',
+            'subtitle.required' => 'O subtítulo deve conter pelo menos 3 letras!',
+            'message.required' => 'A mensagem deve conter pelo menos 3 letras!',
+            'abstract.required' => 'O resumo deve conter pelo menos 3 letras!',
+        ];
+    }
+
+    public function attributes()
+    {
+        return [
+            'title' => 'título',
+            'subtitle' => 'subtítulo',
+            'message' => 'mensagem',
+            'abstract' => 'resumo',
         ];
     }
 }

@@ -12,7 +12,9 @@ class BlogController extends Controller
     public function index()
     {
         $posts = Post::orderBy('created_at', 'desc')->paginate(10);
-        return view('blog.index', compact('posts'));
+        $topPost = Post::orderBy('views', 'desc')->get();
+        $countPost = count(Post::all());
+        return view('blog.index', compact('posts', 'topPost', 'countPost'));
     }
 
     public function show(Post $post)
@@ -58,6 +60,9 @@ class BlogController extends Controller
             ->orWhere('message', 'LIKE', "%{$search}%")
             ->orderBy('created_at', 'desc')->paginate(10);
 
-        return view('blog.index', compact('posts'));
+        $topPost = Post::orderBy('views', 'desc')->get();
+        $countPost = count(Post::all());
+
+        return view('blog.index', compact('posts', 'topPost', 'countPost'));
     }
 }

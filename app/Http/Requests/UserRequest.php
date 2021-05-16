@@ -25,12 +25,17 @@ class UserRequest extends FormRequest
     {
         return [
             'name' => 'required|string|min:3',
+            'email' => 'required|email|min:3',
+            'password' => 'required|string|min:3',
         ];
     }
 
     public function messages()
     {
         return [
+            'name.required' => 'O nome deve conter pelo menos 3 letras!',
+            'email.required' => 'O email deve conter pelo menos 3 letras!',
+            'password.required' => 'A senha deve conter pelo menos 3 letras!',
         ];
     }
 
@@ -38,6 +43,8 @@ class UserRequest extends FormRequest
     {
         return [
             'name' => 'nome',
+            'email' => 'email',
+            'password' => 'senha',
         ];
     }
 }

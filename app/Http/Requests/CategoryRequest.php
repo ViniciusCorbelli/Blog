@@ -31,7 +31,7 @@ class CategoryRequest extends FormRequest
     public function messages()
     {
         return [
-            // 'name.required' => 'nome obrigatório',
+            'name.required' => 'O nome da categoria deve conter pelo menos 3 letras!',
         ];
     }
 

@@ -18,7 +18,7 @@
         </div>
     </div>
     <div class="p-3 container">
-        <p>Copyright © 2021 Code Júnior</p>
+        <p>Copyright © 2021 <a href="https://github.com/ViniciusCorbelli" target="_blank"> Vinícius Corbelli </a> </p>
     </div>
 </footer>
 </div>

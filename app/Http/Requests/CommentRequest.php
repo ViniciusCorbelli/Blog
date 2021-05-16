@@ -24,6 +24,21 @@ class CommentRequest extends FormRequest
     public function rules()
     {
         return [
+            'message' => 'required|string|min:3',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'message.required' => 'A mensagem deve conter pelo menos 3 letras!',
+        ];
+    }
+
+    public function attributes()
+    {
+        return [
+            'message' => 'mensagem',
         ];
     }
 }

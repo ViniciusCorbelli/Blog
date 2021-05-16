@@ -1,45 +1,48 @@
 @extends('layouts.app')
 
 @section('content')
-    @php
-    $topPost = App\Post::orderBy('views', 'desc')->get();
-    $countPost = count($topPost);
-    @endphp
     <div class="container">
-        <div class="row">
-            @if ($countPost > 0)
+        @if ($countPost == 0)
+            <div class="verticals ten offset-by-one">
+                <ol class="breadcrumb breadcrumb-fill2">
+                    <li><a href="{{ route('site.index') }}"><i class="fa fa-home"></i></a></li>
+                    <li><a href="{{ route('blog.index') }}">Blog</a></li>
+                </ol>
+            </div>
+            <h1> CodeJR </h1>
+            <p> Não foram encontrados resultados para sua pesquisa.</p>
+        @else
+            <div class="row spotlight">
                 <div class="col-sm-4 card-spotlight pl-1 pr-1">
                     <a href="{{ route('blog.view', $topPost[0]->id) }}">
                         <img src="{{ asset('/storage/img/posts/' . $topPost[0]->image) }}" alt="Post em destaque">
                         <div class="card-spotlight-text">
+                            <p>{{ $topPost[0]->subtitle }}</p>
                             <h1>{{ $topPost[0]->title }}</h1>
                         </div>
                     </a>
                 </div>
-            @endif
-
-            <div class="col-sm-8">
-                <div class="row">
-                    @for ($i = 1; $i < 5; $i++)
-                        @if ($countPost > $i)
+                <div class="col-sm-8">
+                    <div class="row">
+                        @for ($i = 1; $i < 5; $i++)
                             <div class="col-sm-6 card-spotlight pl-1 pr-1">
-                                <a href={{ route('blog.view', $topPost[$i]->id) }}>
-                                    <img src="{{ asset('/storage/img/posts/' . $topPost[$i]->image) }}"
-                                        alt="Post em destaque">
-                                    <div class="card-spotlight-text">
-                                        <h1>{{ $topPost[$i]->title }}</h1>
-                                    </div>
-                                </a>
+                                @if ($countPost > $i)
+                                    <a href={{ route('blog.view', $topPost[$i]->id) }}>
+                                        <img src="{{ asset('/storage/img/posts/' . $topPost[$i]->image) }}"
+                                            alt="Post em destaque">
+                                        <div class="card-spotlight-text">
+                                            <p>{{ $topPost[$i]->subtitle }}</p>
+                                            <h1>{{ $topPost[$i]->title }}</h1>
+                                        </div>
+                                    </a>
+                                @endif
                             </div>
-                        @endif
-                    @endfor
+                        @endfor
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <div class="row">
-            <div class="col-sm-8 pl-1 pr-1">
-                @if ($countPost > 0)
+            <div class="row">
+                <div class="col-sm-8 pl-1 pr-1">
                     @foreach ($posts as $post)
                         <div class="card-post card-post-author">
                             <img src="{{ asset('storage/img/user/' . $post->user->image) }}" alt="Foto de perfil">
@@ -61,16 +64,16 @@
                             </div>
                         </div>
                     @endforeach
-                @endif
-                {{ $posts->links() }}
-            </div>
-            <div class="col-sm-4 pl-1 pr-1">
-                <div class="card-post">
-                    <a class="twitter-timeline" data-height="600" data-theme="light"
-                        href="https://twitter.com/Code_junior">Tweets por Code Empresa Júnior</a>
-                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    {{ $posts->links() }}
+                </div>
+                <div class="col-sm-4 pl-3 pr-1">
+                    <div class="card-post">
+                        <a class="twitter-timeline" data-height="600" data-theme="light"
+                            href="https://twitter.com/Code_junior">Tweets por Code Empresa Júnior</a>
+                        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    </div>
                 </div>
             </div>
-        </div>
+        @endif
     </div>
 @endsection
