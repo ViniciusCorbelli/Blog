@@ -2,19 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\postRequest;
 use App\Comment;
+use App\Http\Requests\CommentRequest;
 use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
-    public function index()
-    {
-        $comments = Comment::all();
-        return view('profile.comments.index', compact('comments'));
-    }
 
-    public function store(PostRequest $request)
+    public function store(CommentRequest $request)
     {
         $data = $request->all();
         $data['user_id'] = Auth::user()->id;
@@ -27,7 +22,7 @@ class CommentController extends Controller
         return view('profile.comments.edit', compact('comment'));
     }
 
-    public function update(PostRequest $request, Comment $comment)
+    public function update(CommentRequest $request, Comment $comment)
     {
         $comment->update($request->all());
         return redirect()->route('blog.view', $comment->post_id)->with('success', true);

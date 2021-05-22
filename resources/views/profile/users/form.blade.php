@@ -24,7 +24,6 @@
     </div>
 </div>
 <hr>
-<hr>
 <div class="row">
         <div class="form-group col-6">
             <label for="password" {{!isset($edit) ? 'required' : ''}}>Senha</label> 

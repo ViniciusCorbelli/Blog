@@ -24,11 +24,11 @@
 <div class="form-group">
     <label for="message" class="required">Postagem </label>
     <textarea name="message" class="form-control"
-        value="{{ old('message', $post->message) }}"> {{ $post->message }} </textarea>
+        value="{{ old('message', $post->message) }}"rows="12"> {{ $post->message }} </textarea>
 </div>
 
 <div class="form-group">
     <label for="abstract" class="required">Resumo da postagem </label>
     <textarea name="abstract" class="form-control"
-        value="{{ old('abstract', $post->abstract) }}"> {{ $post->abstract }} </textarea>
+        value="{{ old('abstract', $post->abstract) }}"rows="12"> {{ $post->abstract }} </textarea>
 </div>
