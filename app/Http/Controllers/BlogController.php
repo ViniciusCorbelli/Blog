@@ -59,11 +59,8 @@ class BlogController extends Controller
         $posts = Post::query()
             ->where('title', 'LIKE', "%{$search}%")
             ->orWhere('message', 'LIKE', "%{$search}%")
-            ->orderBy('created_at', 'desc');
+            ->orderBy('created_at', 'desc')->get();
 
-        $topPost = Post::orderBy('views', 'desc')->get();
-        $countPost = count(Post::all());
-
-        return view('blog.index', compact('posts', 'topPost', 'countPost'));
+        return view('blog.search', compact('posts', 'search'));
     }
 }
