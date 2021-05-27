@@ -19,18 +19,11 @@
                     @endphp
 
                     @for ($i = 0; $i < 12; $i++)
-                        @php
-                            $mes = $i+1;
-                            if ($mes < 10)
-                                $mes = 0 . $mes;
-                            $id = App\Post::whereMonth('created_at', $mes)->first();
-                        @endphp
                         <hr>
                         <div class="row">
                             <div class="col-8">
                                 <h6> <Strong>
-                                        @if ($id != null) <a
-                                                href="{{ route('blog.date.view', $id->id) }}"> @endif
+                                         <a href="{{ route('blog.date.view', $i+1) }}">
                                         {{ $months[$i] }}</a>
                                     </Strong> </h6>
                             </div>

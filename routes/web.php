@@ -15,16 +15,21 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
+// Página inicial
 Route::get('/', 'SiteController@index')->name('site.index');
+// Página de contato
 Route::get('/contact', 'SiteController@contact')->name('site.contact');
+Route::post('/contact/send', 'SiteController@sendContact')->name('site.contact.send');
+// Páginas do blog
 Route::get('/blog', 'BlogController@index')->name('blog.index');
 Route::get('/blog/search/', 'BlogController@search')->name('blog.search');
 Route::get('/blog/categories', 'BlogController@categories')->name('blog.category');
 Route::get('/blog/category/{category}', 'BlogController@category')->name('blog.category.view');
 Route::get('/blog/dates', 'BlogController@dates')->name('blog.date');
-Route::get('/blog/date/{post}', 'BlogController@date')->name('blog.date.view');
+Route::get('/blog/date/{month}', 'BlogController@date')->name('blog.date.view');
 Route::get('/post/{post}', 'BlogController@show')->name('blog.view');
 
+// Página de perfil
 Route::middleware('auth')->group(function () {
     Route::get('/home', 'HomeController@index')
         ->name('profile.home')->middleware('Admin');

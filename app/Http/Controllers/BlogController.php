@@ -44,11 +44,12 @@ class BlogController extends Controller
         return view('blog.date.index');
     }
 
-    public function date(Post $post)
+    public function date($month)
     {
-        $posts = Post::whereMonth('created_at', date('m', strtotime($post->created_at)))->orderBy('created_at', 'desc')->paginate(10);
+        $posts = Post::whereMonth('created_at', $month)->whereYear('created_at', date('Y'))->orderBy('created_at', 'desc')->paginate(10);
         $months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
-        $month = $months[(date('m', strtotime($post->created_at))) - 1 + 1];
+
+        $month = $months[($month - 1)%12];
         return view('blog.date.view', compact('month', 'posts'));
     }
 

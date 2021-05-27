@@ -6,26 +6,26 @@
             <h1> ENVIE UMA MENSAGEM </h1>
             <h3><i class="fas fa-envelope"></i> contato@codejr.com.br | <i class="fab fa-instagram"></i> @codejr</h3>
         </div>
-        <form class="form-contact">
-            <label for="name" class="required">Nome </label>
-            <input type="text" name="name" id="name" autofocus class="form-control" required value="{{ old('name') }}">
+        <form class="form-contact" method="post" action="{{ route('site.contact.send') }}">
+            {{ csrf_field() }}
 
-            <label for="email" class="required">Email </label>
-            <input type="email" name="email" id="email" autofocus class="form-control" required
-                value="{{ old('email') }}">
 
-            <label for="phone" class="required">Telefone </label>
-            <input type="phone" name="phone" id="phone" autofocus class="form-control" required
-                value="{{ old('phone') }}">
-
-            <label for="Assunto" class="required">Assunto </label>
-            <input type="text" name="Assunto" id="Assunto" autofocus class="form-control" required
-                value="{{ old('Assunto') }}">
-
-            <label for="Menssagem" class="required">Menssagem </label>
-            <textarea type="text" name="Assunto" id="Assunto" autofocus class="form-control" required
-                value="{{ old('Assunto') }}"> </textarea>
-
+            <div class="form-group col-12">
+                <label for="title" class="required">Nome </label>
+                <input type="text" name="name" id="name" required class="form-control">
+            </div>
+            <div class="form-group col-12">
+                <label for="email" class="required">E-mail </label>
+                <input type="email" name="email" id="email" required class="form-control" autofocus>
+            </div>
+            <div class="form-group col-12">
+                <label for="subject" class="required">Assunto </label>
+                <input type="text" name="subject" id="subject" required class="form-control" autofocus>
+            </div>
+            <div class="form-group col-12">
+                <label for="message" class="required">Mensagem </label>
+                <textarea name="message" id="message" required class="form-control"></textarea>
+            </div>
             <button type="submit" class="buttons button-registrar">Enviar</button>
         </form>
         <div class="text-center phone-contact">
