@@ -13,7 +13,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="card-post categories">
-                    <h1>Posts em <strong> {{ $month }} </strong> </h1>
+                    <h1>Posts em <strong> {{ $month }}</strong> de <strong>{{$year}} </strong> </h1>
                     @foreach ($posts as $post)
                         <hr>
                         @php

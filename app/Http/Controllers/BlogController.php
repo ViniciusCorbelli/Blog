@@ -44,13 +44,13 @@ class BlogController extends Controller
         return view('blog.date.index');
     }
 
-    public function date($month)
+    public function date($month, $year)
     {
-        $posts = Post::whereMonth('created_at', $month)->whereYear('created_at', date('Y'))->orderBy('created_at', 'desc')->paginate(10);
+        $posts = Post::whereMonth('created_at', $month)->whereYear('created_at', $year)->orderBy('created_at', 'desc')->paginate(10);
         $months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
 
         $month = $months[($month - 1)%12];
-        return view('blog.date.view', compact('month', 'posts'));
+        return view('blog.date.view', compact('month', 'posts', 'year'));
     }
 
     public function search(Request $request)
@@ -59,7 +59,7 @@ class BlogController extends Controller
         $posts = Post::query()
             ->where('title', 'LIKE', "%{$search}%")
             ->orWhere('message', 'LIKE', "%{$search}%")
-            ->orderBy('created_at', 'desc')->paginate(10);
+            ->orderBy('created_at', 'desc');
 
         $topPost = Post::orderBy('views', 'desc')->get();
         $countPost = count(Post::all());

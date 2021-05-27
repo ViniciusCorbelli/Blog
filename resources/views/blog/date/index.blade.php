@@ -15,20 +15,31 @@
                     <h1>Datas</h1>
                     @php
                         $months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
-                        $countPost = [count(App\Post::whereMonth('created_at', '01')->whereYear('created_at', date('Y'))->get()), count(App\Post::whereMonth('created_at', '02')->whereYear('created_at', date('Y'))->get()), count(App\Post::whereMonth('created_at', '03')->whereYear('created_at', date('Y'))->get()), count(App\Post::whereMonth('created_at', '04')->whereYear('created_at', date('Y'))->get()), count(App\Post::whereMonth('created_at', '05')->whereYear('created_at', date('Y'))->get()), count(App\Post::whereMonth('created_at', '06')->whereYear('created_at', date('Y'))->get()), count(App\Post::whereMonth('created_at', '07')->whereYear('created_at', date('Y'))->get()), count(App\Post::whereMonth('created_at', '08')->whereYear('created_at', date('Y'))->get()), count(App\Post::whereMonth('created_at', '09')->whereYear('created_at', date('Y'))->get()), count(App\Post::whereMonth('created_at', '10')->whereYear('created_at', date('Y'))->get()), count(App\Post::whereMonth('created_at', '11')->whereYear('created_at', date('Y'))->get()), count(App\Post::whereMonth('created_at', '12')->whereYear('created_at', date('Y'))->get())];
                     @endphp
 
                     @for ($i = 0; $i < 12; $i++)
+                        @php
+                            $month = (date('m') + $i) % 12 + 1;
+                            $year = 12 - date('m') + $i >= 2 * (12 - date('m')) ? date('Y') : date('Y') - 1;
+                        @endphp
                         <hr>
                         <div class="row">
                             <div class="col-8">
                                 <h6> <Strong>
-                                         <a href="{{ route('blog.date.view', $i+1) }}">
-                                        {{ $months[$i] }}</a>
+                                        <a href="{{ route('blog.date.view', [$month, $year]) }}">
+                                            {{ $months[$month-1] }} de {{ $year }}</a>
                                     </Strong> </h6>
                             </div>
                             <div class="col-4 text-right">
-                                <p> {{ $countPost[$i] }} postagens</p>
+                                @php
+                                    if ($month < 10) {
+                                        $month = 0 . $month;
+                                    }
+                                @endphp
+                                <p> {{ count(
+    App\Post::whereMonth('created_at', $month)->whereYear('created_at', $year)->get(),
+) }}
+                                    postagens</p>
                             </div>
                         </div>
                     @endfor
