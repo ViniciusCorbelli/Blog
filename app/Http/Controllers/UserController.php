@@ -103,13 +103,14 @@ class UserController extends Controller
      */
     public function update(UserRequest $request, User $user)
     {
-        $data = $request->all();
-
-        if ($request['access'] != null && (Auth::user() == null || Auth::user()->access != "Administrador")) {
-            return redirect()->route('profile.users.index')->with('failed', true);
+        if (Auth::user() == null || Auth::user()->access != "Administrador") {
+            $data = $request->except('access', 'confirmed');
+        } else {
+            $data = $request->all();
         }
 
         $data = User::bcryptPassword($data);
+        
         if ($request->hasfile('image')) {
             $extesion = $request->image->getClientOriginalExtension();
             $slug = str_slug($request->name);
@@ -135,9 +136,9 @@ class UserController extends Controller
         return redirect()->route('profile.users.index')->with('success', true);
     }
 
-    public function pendency(Request $request, User $user)
+    public function pendency(User $user)
     {
-        $user->update($request->all());
+        $user->update(['verified'=>1]);
         return redirect()->route('profile.users.index')->with('success', true);
     }
 }

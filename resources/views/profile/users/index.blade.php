@@ -22,7 +22,6 @@
                                             <form class="form-save" action="{{ route('profile.users.pendency', $user->id) }}" method="post">
                                                 @csrf
                                                 @method('put')
-                                                <input type="hidden" value='1' name='verified'>
                                                 <button type="submit" class="btn btn-warning "> <i class="fas fa-check"></i></button>
                                             </form>
                                         @else

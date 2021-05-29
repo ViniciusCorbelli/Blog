@@ -11,20 +11,44 @@
 
 
             <div class="form-group col-12">
-                <label for="title" class="required">Nome </label>
+                <label for="name" class="required">Nome </label>
                 <input type="text" name="name" id="name" required class="form-control">
+
+                @error('name')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
             </div>
             <div class="form-group col-12">
                 <label for="email" class="required">E-mail </label>
                 <input type="email" name="email" id="email" required class="form-control" autofocus>
+
+                @error('email')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
             </div>
             <div class="form-group col-12">
                 <label for="subject" class="required">Assunto </label>
                 <input type="text" name="subject" id="subject" required class="form-control" autofocus>
+
+                @error('subject')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
             </div>
             <div class="form-group col-12">
                 <label for="message" class="required">Mensagem </label>
                 <textarea name="message" id="message" required class="form-control"></textarea>
+
+                @error('message')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
             </div>
             <button type="submit" class="buttons button-registrar">Enviar</button>
         </form>

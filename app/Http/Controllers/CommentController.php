@@ -9,10 +9,11 @@ use Illuminate\Support\Facades\Auth;
 class CommentController extends Controller
 {
 
-    public function store(CommentRequest $request)
+    public function store(CommentRequest $request, $post)
     {
         $data = $request->all();
         $data['user_id'] = Auth::user()->id;
+        $data['post_id'] = $post;
         Comment::create($data);
         return redirect()->route('blog.view', $data['post_id'])->with('success', true);
     }
