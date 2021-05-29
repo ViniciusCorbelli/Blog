@@ -63,8 +63,10 @@ class UserController extends Controller
     {
         $data = $request->all();
 
-        if ($request['access'] != null && (Auth::user() == null || Auth::user()->access != "Administrador")) {
-            return redirect()->route('profile.users.index')->with('failed', true);
+        if (Auth::user() == null || Auth::user()->access != "Administrador") {
+            $data = $request->except('access', 'confirmed');
+        } else {
+            $data = $request->all();
         }
 
         $data = User::bcryptPassword($data);
