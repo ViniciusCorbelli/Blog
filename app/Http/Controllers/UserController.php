@@ -8,6 +8,7 @@ use App\Post;
 use App\User;
 use Illuminate\Http\Request;
 use App\CustomClasses\ColectionPaginate;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -61,7 +62,13 @@ class UserController extends Controller
     public function store(UserRequest $request)
     {
         $data = $request->all();
+
+        if ($request['access'] != null && (Auth::user() == null || Auth::user()->access != "Administrador")) {
+            return redirect()->route('profile.users.index')->with('failed', true);
+        }
+
         $data = User::bcryptPassword($data);
+
         if ($request->hasfile('image')) {
             $extesion = $request->image->getClientOriginalExtension();
             $slug = str_slug($request->name);
@@ -97,6 +104,11 @@ class UserController extends Controller
     public function update(UserRequest $request, User $user)
     {
         $data = $request->all();
+
+        if ($request['access'] != null && (Auth::user() == null || Auth::user()->access != "Administrador")) {
+            return redirect()->route('profile.users.index')->with('failed', true);
+        }
+
         $data = User::bcryptPassword($data);
         if ($request->hasfile('image')) {
             $extesion = $request->image->getClientOriginalExtension();
